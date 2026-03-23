@@ -6,192 +6,101 @@
     <title>Kitchen Appliance Catalog</title>
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: #f0f2f5;
-            color: #1a1a2e;
-        }
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background: #f0f2f5; color: #1a1a2e; }
         header {
             background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
-            color: white;
-            padding: 40px 20px;
-            text-align: center;
-            position: sticky;
-            top: 0;
-            z-index: 100;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+            color: white; padding: 30px 20px; text-align: center;
+            position: sticky; top: 0; z-index: 100; box-shadow: 0 4px 20px rgba(0,0,0,0.3);
         }
-        header h1 { font-size: 2.2rem; letter-spacing: 1px; }
-        header p { margin-top: 8px; opacity: 0.8; font-size: 1rem; }
-        .filters {
-            display: flex;
-            justify-content: center;
-            gap: 10px;
-            margin-top: 16px;
-            flex-wrap: wrap;
-        }
+        header h1 { font-size: 2rem; letter-spacing: 1px; }
+        header p { margin-top: 6px; opacity: 0.8; font-size: 0.9rem; }
+        .filters { display: flex; justify-content: center; gap: 8px; margin-top: 14px; flex-wrap: wrap; }
         .filters button {
-            padding: 8px 18px;
-            border: 1px solid rgba(255,255,255,0.3);
-            background: transparent;
-            color: white;
-            border-radius: 20px;
-            cursor: pointer;
-            font-size: 0.85rem;
-            transition: all 0.3s;
+            padding: 6px 16px; border: 1px solid rgba(255,255,255,0.3); background: transparent;
+            color: white; border-radius: 20px; cursor: pointer; font-size: 0.8rem; transition: all 0.3s;
         }
-        .filters button:hover, .filters button.active {
-            background: #e94560;
-            border-color: #e94560;
-        }
-        .container {
-            max-width: 1400px;
-            margin: 0 auto;
-            padding: 30px 20px;
-        }
-        .grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(420px, 1fr));
-            gap: 24px;
-        }
+        .filters button:hover, .filters button.active { background: #e94560; border-color: #e94560; }
+        .container { max-width: 1400px; margin: 0 auto; padding: 24px 20px; }
+        .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(380px, 1fr)); gap: 20px; }
         .card {
-            background: white;
-            border-radius: 16px;
-            overflow: hidden;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
-            transition: transform 0.3s, box-shadow 0.3s;
+            background: white; border-radius: 14px; overflow: hidden; cursor: pointer;
+            box-shadow: 0 3px 12px rgba(0,0,0,0.08); transition: transform 0.3s, box-shadow 0.3s;
         }
-        .card:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 8px 30px rgba(0,0,0,0.15);
-        }
+        .card:hover { transform: translateY(-3px); box-shadow: 0 8px 25px rgba(0,0,0,0.15); }
         .card-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 16px 20px;
-            background: linear-gradient(135deg, #1a1a2e, #16213e);
-            color: white;
+            display: flex; justify-content: space-between; align-items: center;
+            padding: 14px 18px; background: linear-gradient(135deg, #1a1a2e, #16213e); color: white;
         }
-        .card-header .brand-badge {
-            background: #e94560;
-            padding: 4px 12px;
-            border-radius: 12px;
-            font-size: 0.75rem;
-            font-weight: 600;
-            text-transform: uppercase;
-        }
-        .card-header .price {
-            font-size: 1.4rem;
-            font-weight: 700;
-            color: #4ecca3;
-        }
-        .card-images {
-            display: flex;
-            height: 220px;
-            overflow: hidden;
-            background: #fafafa;
-        }
+        .brand-badge { background: #e94560; padding: 3px 10px; border-radius: 10px; font-size: 0.7rem; font-weight: 600; text-transform: uppercase; }
+        .price { font-size: 1.3rem; font-weight: 700; color: #4ecca3; }
+        .card-images { display: flex; height: 200px; overflow: hidden; background: #fafafa; }
         .card-images img {
-            flex: 1;
-            min-width: 0;
-            object-fit: contain;
-            padding: 10px;
-            border-right: 1px solid #eee;
-            background: white;
-            transition: transform 0.3s;
+            flex: 1; min-width: 0; object-fit: contain; padding: 8px; border-right: 1px solid #eee; background: white;
         }
         .card-images img:last-child { border-right: none; }
-        .card-images img:hover { transform: scale(1.05); z-index: 2; }
-        .card-images .img-placeholder {
-            flex: 1;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background: #f8f9fa;
-            color: #aaa;
-            font-size: 0.8rem;
-            text-align: center;
-            padding: 10px;
+        .img-placeholder { flex:1; display:flex; align-items:center; justify-content:center; background:#f8f9fa; color:#aaa; font-size:0.8rem; text-align:center; padding:10px; }
+        .card-body { padding: 16px; }
+        .card-body h3 { font-size: 0.9rem; line-height: 1.3; color: #1a1a2e; }
+        .type-badge { display:inline-block; background:#e8f4f8; color:#0f3460; padding:2px 8px; border-radius:6px; font-size:0.7rem; margin:4px 0 8px; font-weight:500; }
+        .qty-badge { font-size:0.65rem; background:#fff3cd; color:#856404; padding:2px 6px; border-radius:6px; margin-left:6px; }
+        .specs-mini { display:grid; grid-template-columns:1fr 1fr; gap:4px; font-size:0.75rem; color:#555; }
+        .specs-mini strong { display:block; font-size:0.65rem; text-transform:uppercase; letter-spacing:0.4px; color:#1a1a2e; }
+        .view-detail { display:block; margin-top:10px; text-align:center; color:#e94560; font-size:0.8rem; font-weight:600; }
+
+        /* Detail Page */
+        .detail-overlay {
+            display:none; position:fixed; top:0; left:0; width:100%; height:100%; z-index:200;
+            background:rgba(0,0,0,0.6); overflow-y:auto;
         }
-        .card-body { padding: 20px; }
-        .card-body h3 {
-            font-size: 1rem;
-            margin-bottom: 4px;
-            color: #1a1a2e;
-            line-height: 1.3;
+        .detail-overlay.active { display:block; }
+        .detail-page {
+            max-width:1100px; margin:30px auto; background:white; border-radius:16px;
+            overflow:hidden; box-shadow:0 10px 40px rgba(0,0,0,0.3); animation: slideUp 0.3s ease;
         }
-        .card-body .type-badge {
-            display: inline-block;
-            background: #e8f4f8;
-            color: #0f3460;
-            padding: 3px 10px;
-            border-radius: 8px;
-            font-size: 0.75rem;
-            margin: 6px 0 12px;
-            font-weight: 500;
+        @keyframes slideUp { from { transform:translateY(40px); opacity:0; } to { transform:translateY(0); opacity:1; } }
+        .detail-top {
+            display:flex; justify-content:space-between; align-items:center;
+            padding:20px 28px; background:linear-gradient(135deg, #1a1a2e, #0f3460); color:white;
         }
-        .specs-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 8px;
-            margin-bottom: 12px;
+        .detail-top h2 { font-size:1.3rem; max-width:70%; }
+        .detail-price { font-size:1.8rem; font-weight:700; color:#4ecca3; }
+        .close-btn {
+            position:absolute; top:20px; right:28px; background:rgba(255,255,255,0.15);
+            border:none; color:white; width:36px; height:36px; border-radius:50%;
+            font-size:1.2rem; cursor:pointer; transition:background 0.2s;
         }
-        .spec-item {
-            font-size: 0.8rem;
-            color: #555;
+        .close-btn:hover { background:rgba(255,255,255,0.3); }
+        .detail-gallery { padding:24px; background:#fafafa; }
+        .gallery-main {
+            width:100%; max-height:400px; object-fit:contain; border-radius:10px;
+            background:white; display:block; margin:0 auto; cursor:zoom-in;
         }
-        .spec-item strong {
-            color: #1a1a2e;
-            display: block;
-            font-size: 0.7rem;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-            margin-bottom: 2px;
+        .gallery-thumbs {
+            display:flex; gap:8px; margin-top:12px; overflow-x:auto; padding-bottom:8px;
         }
-        .features {
-            border-top: 1px solid #eee;
-            padding-top: 12px;
+        .gallery-thumbs img {
+            width:80px; height:80px; object-fit:contain; border-radius:8px; border:2px solid transparent;
+            cursor:pointer; background:white; flex-shrink:0; transition:border-color 0.2s;
         }
-        .features summary {
-            font-size: 0.8rem;
-            font-weight: 600;
-            color: #0f3460;
-            cursor: pointer;
-            user-select: none;
+        .gallery-thumbs img:hover, .gallery-thumbs img.active { border-color:#e94560; }
+        .detail-content { display:grid; grid-template-columns:1fr 1fr; gap:24px; padding:24px 28px; }
+        .detail-specs h3, .detail-features h3 { font-size:1rem; margin-bottom:12px; color:#0f3460; border-bottom:2px solid #e8f4f8; padding-bottom:6px; }
+        .spec-row { display:flex; justify-content:space-between; padding:8px 0; border-bottom:1px solid #f0f0f0; font-size:0.85rem; }
+        .spec-row .label { color:#666; }
+        .spec-row .value { font-weight:600; color:#1a1a2e; text-align:right; max-width:60%; }
+        .detail-features ul { list-style:none; }
+        .detail-features li { font-size:0.85rem; color:#444; padding:6px 0 6px 20px; position:relative; border-bottom:1px solid #f8f8f8; }
+        .detail-features li::before { content:"\2713"; position:absolute; left:0; color:#4ecca3; font-weight:bold; }
+        .detail-badges { padding:0 28px 24px; display:flex; gap:8px; flex-wrap:wrap; }
+        .detail-badges span {
+            padding:4px 12px; border-radius:16px; font-size:0.75rem; font-weight:500;
+            background:#e8f4f8; color:#0f3460;
         }
-        .features ul {
-            list-style: none;
-            padding: 8px 0 0 0;
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 4px;
-        }
-        .features li {
-            font-size: 0.75rem;
-            color: #666;
-            padding-left: 16px;
-            position: relative;
-        }
-        .features li::before {
-            content: "\2713";
-            position: absolute;
-            left: 0;
-            color: #4ecca3;
-            font-weight: bold;
-        }
-        .qty-badge {
-            font-size: 0.7rem;
-            background: #fff3cd;
-            color: #856404;
-            padding: 2px 8px;
-            border-radius: 8px;
-            margin-left: 8px;
-        }
-        @media (max-width: 500px) {
-            .grid { grid-template-columns: 1fr; }
-            .card-images { height: 160px; }
-            header h1 { font-size: 1.5rem; }
+        @media (max-width:768px) {
+            .grid { grid-template-columns:1fr; }
+            .detail-content { grid-template-columns:1fr; }
+            .detail-page { margin:10px; }
+            .detail-top h2 { font-size:1rem; }
         }
     </style>
 </head>
@@ -212,521 +121,602 @@
             <button onclick="filterCards('Microwave')">Microwaves</button>
         </div>
     </header>
-
     <div class="container">
         <div class="grid" id="product-grid"></div>
     </div>
+    <div class="detail-overlay" id="detail-overlay" onclick="if(event.target===this)closeDetail()">
+        <div class="detail-page" id="detail-page"></div>
+    </div>
 
-    <script>
-    const products = [
-      {
-        model: "RF90F23AEW",
-        brand: "Samsung",
-        fullName: "Samsung Bespoke 23 cu. ft. Counter Depth 4-Door French Door Refrigerator with AI Family Hub+",
-        type: "4-Door French Door Refrigerator",
-        price: 28000,
-        qty: 1,
-        specs: { capacity: "23 cu ft", dimensions: "70.25\" H x 35.75\" W x 28.75\" D", color: "White Glass" },
-        features: ["AI Family Hub+ with 32\" touchscreen","AI Vision Inside camera-based food recognition","Beverage Center with AutoFill Water Pitcher","FlexZone Drawer with 5 temp settings","AI Inverter Compressor (10-Year Warranty)","ENERGY STAR Certified"],
-        images: [
-          "https://images.samsung.com/is/image/samsung/p6pim/us/rf90f23aewaa/gallery/us-bespoke-ai-refrigerator-fdr-family-hub™-and-ai-vision-inside-579983-rf90f23aewaa-551057132",
-          "https://images.samsung.com/is/image/samsung/p6pim/us/rf90f23aecraa/gallery/us-bespoke-ai-refrigerator-fdr-family-hub™-and-ai-vision-inside-579983-rf90f23aecraa-551056565",
-          "https://images.samsung.com/is/image/samsung/p6pim/us/rf90f23aeceaa/gallery/us-bespoke-ai-refrigerator-fdr-family-hub™-and-ai-vision-inside-579983-rf90f23aeceaa-551057630"
-        ]
-      },
-      {
-        model: "LTGL6937F",
-        brand: "LG",
-        fullName: "LG 6.9 cu. ft. Smart InstaView Double Oven Slide-In Gas Range with ProBake Convection & Air Fry",
-        type: "Slide-In Gas Range",
-        price: 25000,
-        qty: 2,
-        specs: { capacity: "6.9 cu ft total", dimensions: "36\" H x 29.88\" W x 29.27\" D", color: "PrintProof Stainless Steel" },
-        features: ["UltraHeat 22,000 BTU dual-power burner","ProBake Convection for even baking","Air Fry & Air Sous Vide","InstaView knock-twice window","EasyClean + Self-Clean modes","Wi-Fi / LG ThinQ app control"],
-        images: [
-          "https://media.us.lg.com/transform/ecomm-PDPGallery-1100x730/41ae331a-88cc-4b26-b443-7ea5bf6271f4/md08003070-DZ-05-jpg",
-          "https://media.us.lg.com/transform/ecomm-PDPGallery-1100x730/06071fe2-ee4b-4341-be3e-2342deef97b5/md08003071-DZ-08-jpg"
-        ]
-      },
-      {
-        model: "RF23BB860012",
-        brand: "Samsung",
-        fullName: "Samsung Bespoke 4-Door French Door Smart Refrigerator (23 cu. ft.) with Beverage Center",
-        type: "4-Door French Door Refrigerator",
-        price: 25000,
-        qty: 1,
-        specs: { capacity: "22.8 cu ft", dimensions: "70\" H x 35.75\" W x 28.75\" D", color: "White Glass" },
-        features: ["Beverage Center with AutoFill Water Pitcher","Dual Ice Maker (cubed + Ice Bites)","FlexZone Drawer with 5 temp settings","Bespoke customizable door panels","SmartThings app connectivity","ENERGY STAR Certified"],
-        images: [
-          "https://images.samsung.com/is/image/samsung/p6pim/us/rf23bb860012aa/gallery/us-counter-depth-4-door-french-door-beverage-center-rf23bb860012aa-551015703",
-          "https://images.samsung.com/is/image/samsung/p6pim/us/rf23bb86004maa/gallery/us-counter-depth-4-door-french-door-beverage-center-rf23bb86004maa-551015758",
-          "https://images.samsung.com/is/image/samsung/p6pim/us/rf23bb8600qlaa/gallery/us-counter-depth-4-door-french-door-beverage-center-rf23bb8600qlaa-551015813"
-        ]
-      },
-      {
-        model: "RF90F29AECR",
-        brand: "Samsung",
-        fullName: "Samsung Bespoke 29 cu. ft. 4-Door French Door Refrigerator with AI Family Hub+",
-        type: "4-Door French Door Refrigerator",
-        price: 25000,
-        qty: 1,
-        specs: { capacity: "29 cu ft", dimensions: "70.25\" H x 35.75\" W x 34.25\" D", color: "Charcoal Glass / Stainless Steel" },
-        features: ["AI Family Hub+ with 32\" touchscreen","AI Vision Inside camera recognition","Beverage Center with AutoFill Pitcher","FlexZone Drawer (5 settings)","AI Inverter Compressor (10-Year Warranty)","ENERGY STAR Certified"],
-        images: [
-          "https://images.samsung.com/is/image/samsung/p6pim/us/rf90f29aecraa/gallery/us-french-door-rf90f29aecraa-bespoke-ai---door-french-door-charcoal-glass-stainless-steel-551059747",
-          "https://images.samsung.com/is/image/samsung/p6pim/us/rf90f23aecraa/gallery/us-bespoke-ai-refrigerator-fdr-family-hub™-and-ai-vision-inside-579983-rf90f23aecraa-551056565"
-        ]
-      },
-      {
-        model: "LRYXC2606S",
-        brand: "LG",
-        fullName: "LG 26 cu. ft. Smart Counter-Depth MAX French Door Refrigerator with Four Types of Ice",
-        type: "French Door Refrigerator",
-        price: 18000,
-        qty: 1,
-        specs: { capacity: "26 cu ft", dimensions: "70.25\" H x 35.75\" W x 29.12\" D", color: "PrintProof Stainless Steel" },
-        features: ["Four types of ice incl. Craft Ice spheres","InstaView knock-twice glass panel","LED-lit pocket handles","Counter-depth built-in look","UVnano dispenser","ENERGY STAR Certified"],
-        images: [
-          "https://media.us.lg.com/transform/ecomm-PDPGallery-1100x730/0536ef64-a1db-46e3-a9a0-0a39375eccdb/LRYKC2606S_gallery_new3_5000x5000",
-          "https://media.us.lg.com/transform/ecomm-PDPGallery-1100x730/19e3f6c6-6cd4-4e94-8a6e-89d671adcc14/LRYKC2606D_gallery_4_5000x5000"
-        ]
-      },
-      {
-        model: "LRFXS3106S",
-        brand: "LG",
-        fullName: "LG 30.7 cu. ft. Smart Standard-Depth MAX French Door Refrigerator with Dual Ice Maker",
-        type: "French Door Refrigerator",
-        price: 20000,
-        qty: 1,
-        specs: { capacity: "30.7 cu ft", dimensions: "36.88\" W x 70\" H x 33\" D", color: "PrintProof Stainless Steel" },
-        features: ["Dual Ice Maker (in-door + in-freezer)","Tall Ice & Water Dispenser","Door Cooling+ technology","3-Tier Organization Freezer","Wi-Fi / LG ThinQ app","ENERGY STAR Certified"],
-        images: [
-          "https://media.us.lg.com/transform/ecomm-PDPGallery-1100x730/0b3e9f80-cf24-4b5d-9d9f-7a4a9a41baff/Refrigerator_LRFXS3106S_lg-largest-badge_gallery_01_5000x5000"
-        ]
-      },
-      {
-        model: "LF29S8330S",
-        brand: "LG",
-        fullName: "LG 29 cu. ft. Smart Standard-Depth MAX 4-Door French Door Refrigerator with Full-Convert Drawer",
-        type: "4-Door French Door Refrigerator",
-        price: 17000,
-        qty: 1,
-        specs: { capacity: "28.6 cu ft", dimensions: "35.75\" W x 34.38\" D x 70.25\" H", color: "PrintProof Stainless Steel" },
-        features: ["Full-Convert Drawer with 5 temp settings","Dual Ice Maker with Tall Dispenser","SmartPull Pocket Handle","Slam-Resistant soft-close doors","Wi-Fi / LG ThinQ app","ENERGY STAR Certified"],
-        images: [
-          "https://media.us.lg.com/transform/ecomm-PDPGallery-1100x730/0a83d563-f09d-4d45-b9e5-0f5c8cdd6dad/LF29S8330S_gallery_9_5000x5000",
-          "https://www.lg.com/content/dam/channel/wcms/ca_en/images/refrigerators/lf29s8330s_astcna0_enci_ca_en_c/D-1.jpg",
-          "https://www.lg.com/content/dam/channel/wcms/ca_en/images/refrigerators/lf29s8330s_astcna0_enci_ca_en_c/D-3.jpg"
-        ]
-      },
-      {
-        model: "RF29BB8600QL",
-        brand: "Samsung",
-        fullName: "Samsung Bespoke 29 cu. ft. 4-Door French Door Smart Refrigerator with Beverage Center",
-        type: "4-Door French Door Refrigerator",
-        price: 20000,
-        qty: 2,
-        specs: { capacity: "28.8 cu ft", dimensions: "35.75\" W x 34.25\" D x 70\" H", color: "Stainless Steel (Bespoke)" },
-        features: ["Beverage Center with AutoFill Pitcher","Dual Ice Maker (cubed + Ice Bites)","FlexZone Drawer (5 settings)","Twin Cooling Plus technology","SmartThings app control","ENERGY STAR Certified"],
-        images: [
-          "https://images.samsung.com/is/image/samsung/p6pim/us/rf29bb8600qlaa/gallery/us-4-door-french-door-beverage-center-rf29bb8600qlaa-551019964",
-          "https://images.samsung.com/is/image/samsung/p6pim/us/rf23bb8600qlaa/gallery/us-counter-depth-4-door-french-door-beverage-center-rf23bb8600qlaa-551015813"
-        ]
-      },
-      {
-        model: "LF29H8330S",
-        brand: "LG",
-        fullName: "LG 29 cu. ft. Smart Standard-Depth MAX 4-Door French Door Refrigerator (Dual Handle)",
-        type: "4-Door French Door Refrigerator",
-        price: 14873,
-        qty: 1,
-        specs: { capacity: "28.6 cu ft", dimensions: "35.75\" W x 34.38\" D x 70.25\" H", color: "PrintProof Stainless Steel" },
-        features: ["Full-Convert Drawer (5 settings)","Dual Ice Maker with Dispenser","Dual bar handle design","Slam-Resistant soft-close doors","Linear Cooling technology","ENERGY STAR Certified"],
-        images: [
-          "https://media.us.lg.com/transform/ecomm-PDPGallery-1100x730/018e9e55-146a-452f-bd2d-82f2698302a5/LF29H8330S_gallery_3_5000x5000",
-          "https://media.us.lg.com/transform/ecomm-PDPGallery-1100x730/26147d43-451f-4d90-8bcc-4b72099acb55/LF29H8330D_gallery_5_5000x5000"
-        ]
-      },
-      {
-        model: "LCFC26XSS",
-        brand: "LG",
-        fullName: "LG 26 cu. ft. Smart Counter-Depth MAX French Door Refrigerator",
-        type: "French Door Refrigerator",
-        price: 14182,
-        qty: 1,
-        specs: { capacity: "25.5 cu ft", dimensions: "35.75\" W x 29.13\" D x 70.25\" H", color: "PrintProof Stainless Steel" },
-        features: ["Counter-Depth MAX flush cabinet fit","InstaView Door-in-Door","Door Cooling+ technology","Ice & Water Dispenser","Wi-Fi / LG ThinQ app","ENERGY STAR Certified"],
-        images: [
-          "https://media.us.lg.com/transform/ecomm-PDPGallery-1100x730/0b1c3f2f-04ad-4356-b6d9-221c374306ec/LCFC26XSS_gallery_5_5000x5000"
-        ]
-      },
-      {
-        model: "LF30S8210S",
-        brand: "LG",
-        fullName: "LG 30 cu. ft. Smart Standard-Depth MAX 4-Door French Door Refrigerator with Full-Convert Drawer",
-        type: "4-Door French Door Refrigerator",
-        price: 13836,
-        qty: 2,
-        specs: { capacity: "29.6 cu ft", dimensions: "35.75\" W x 34.38\" D x 70.25\" H", color: "PrintProof Stainless Steel" },
-        features: ["Full-Convert Drawer (5 settings)","Internal Water Dispenser","Pocket Handle design","Slam-Resistant soft-close doors","Linear Cooling technology","ENERGY STAR Certified"],
-        images: [
-          "https://media.us.lg.com/transform/ecomm-PDPGallery-1100x730/01277795-e6c7-4545-8ad2-ff852686c739/LF30S8210S_gallery_9_5000x5000"
-        ]
-      },
-      {
-        model: "LF25Z6211S",
-        brand: "LG",
-        fullName: "LG 25 cu. ft. Counter-Depth MAX with Zero Clearance 3-Door French Door Refrigerator",
-        type: "French Door Refrigerator",
-        price: 13836,
-        qty: 3,
-        specs: { capacity: "25.1 cu ft", dimensions: "35.75\" W x 27.5\" D x 70.25\" H", color: "PrintProof Stainless Steel" },
-        features: ["Zero Clearance Hinge System","Counter-Depth MAX ultra-shallow (27.5\" deep)","45% thinner door for built-in look","Slim SpacePlus Ice System","Glide N' Serve Drawer","ENERGY STAR Certified"],
-        images: [
-          "https://media.us.lg.com/transform/ecomm-PDPGallery-1100x730/001f75cc-9b46-4d0b-a37e-3ffe6fde55e2/Refrigerator-LF25Z6211S-gallery-09_5000x5000"
-        ]
-      },
-      {
-        model: "46-73022",
-        brand: "Kenmore",
-        fullName: "Kenmore 73022 26.1 Cu. Ft. French Door Refrigerator with Ice Maker",
-        type: "French Door Refrigerator",
-        price: 12798,
-        qty: 1,
-        specs: { capacity: "26.1 cu ft", dimensions: "69.84\" H x 35.98\" W x 35.38\" D", color: "White" },
-        features: ["Bottom-mount freezer drawer","Built-in ice maker","Dual evaporator cooling","Humidity-controlled crisper","Full-width pantry drawer","Gallon-sized door bins"],
-        images: [
-          "https://www.kenmore.com/media/catalog/product/7/3/73022_1.jpg"
-        ]
-      },
-      {
-        model: "RF30BB660012",
-        brand: "Samsung",
-        fullName: "Samsung Bespoke 3-Door French Door Refrigerator (30 cu. ft.) with Beverage Center",
-        type: "French Door Refrigerator",
-        price: 12452,
-        qty: 1,
-        specs: { capacity: "30 cu ft", dimensions: "70\" H x 35.75\" W x 34.25\" D", color: "White Glass (Bespoke)" },
-        features: ["Beverage Center with AutoFill Pitcher","Dual Auto Ice Maker (cubed + Ice Bites)","Twin Cooling Plus technology","Bespoke customizable panels","AI Energy mode (10% savings)","ENERGY STAR Certified"],
-        images: [
-          "https://images.samsung.com/is/image/samsung/p6pim/us/rf30bb660012aa/gallery/us-3-door-french-door-beverage-center-rf30bb660012aa-551021067",
-          "https://images.samsung.com/is/image/samsung/p6pim/us/rf30bb660012aa/gallery/us-bespoke-3-door-french-door-refrigerator-30-cu-ft-with-beverage-center-in-white-glass-rf30bb660012aa-541436440"
-        ]
-      },
-      {
-        model: "RF23B7671SR",
-        brand: "Samsung",
-        fullName: "Samsung 23 Cu. Ft. Smart Counter Depth 4-Door Flex Refrigerator with Beverage Center",
-        type: "4-Door Flex Refrigerator",
-        price: 11760,
-        qty: 1,
-        specs: { capacity: "23 cu ft", dimensions: "70\" H x 35.88\" W x 28.5\" D", color: "Stainless Steel" },
-        features: ["Beverage Center with AutoFill Pitcher","Dual Ice Maker (cubed + Ice Bites)","FlexZone drawer (fridge or freezer)","UV Deodorizing Filter","CleanGuard antimicrobial handles","ENERGY STAR Certified"],
-        images: [
-          "https://images.samsung.com/is/image/samsung/p6pim/us/rf23b7671sr-aa/gallery/us-4-door-flex-rf23b7671sr-aa-531811336",
-          "https://images.samsung.com/is/image/samsung/p6pim/us/rf23b7671sr-aa/gallery/us-4-door-flex-rf23b7671sr-aa-531811337"
-        ]
-      },
-      {
-        model: "LSIL6334XE",
-        brand: "LG",
-        fullName: "LG 6.3 Cu. Ft. Smart Induction Slide-In Range with ProBake Convection and Air Fry",
-        type: "Slide-In Induction Range",
-        price: 11760,
-        qty: 1,
-        specs: { capacity: "6.3 cu ft oven", dimensions: "36.5\" H x 29.88\" W x 29.31\" D", color: "PrintProof Stainless Steel" },
-        features: ["4 induction elements (up to 3900W)","ProBake Convection rear heating","Air Fry capability","WideView Window","EasyClean + Self-Clean modes","ThinQ Wi-Fi scan-to-cook"],
-        images: [
-          "https://media.us.lg.com/transform/ecomm-PDPGallery-1100x730/256a7977-aa4a-46a7-b3b4-9e197fe5d4e3/Ranges_LSIL6334XE_gallery_05_new_2500x2500"
-        ]
-      },
-      {
-        model: "RF32CG5400SR",
-        brand: "Samsung",
-        fullName: "Samsung 31 Cu. Ft. Mega Capacity 3-Door French Door Refrigerator with Four Types of Ice",
-        type: "French Door Refrigerator",
-        price: 8993,
-        qty: 1,
-        specs: { capacity: "31 cu ft", dimensions: "70\" H x 35.75\" W x 36.25\" D", color: "Stainless Steel" },
-        features: ["Four types of ice (cubed, Ice Bites, curved, crushed)","Dual Auto Ice Maker","All-Around Cooling multi-vent","SmartThings app control","AI Energy Mode","ENERGY STAR Certified"],
-        images: [
-          "https://images.samsung.com/is/image/samsung/p6pim/us/rf32cg5400sraa/gallery/us--rf32cg5400sraa-550242560",
-          "https://images.samsung.com/is/image/samsung/p6pim/us/rf32cg5400sraa/gallery/us--rf32cg5400sraa-550242561"
-        ]
-      },
-      {
-        model: "RS28A500ASR",
-        brand: "Samsung",
-        fullName: "Samsung 28 Cu. Ft. Smart Side-by-Side Refrigerator",
-        type: "Side-by-Side Refrigerator",
-        price: 8647,
-        qty: 1,
-        specs: { capacity: "28 cu ft", dimensions: "70.06\" H x 35.88\" W x 33.5\" D", color: "Stainless Steel" },
-        features: ["In-Door Ice Maker","All-Around Cooling multi-vent","Flat panel recessed handles","SmartThings app control","Digital Inverter Compressor (10-yr warranty)","ENERGY STAR Certified"],
-        images: [
-          "https://images.samsung.com/is/image/samsung/p6pim/us/rs28a500asr-aa/gallery/us-rs5300trs5300tc-569398-rs28a500asr-aa-549695591",
-          "https://images.samsung.com/is/image/samsung/p6pim/us/rs28a500asr-aa/gallery/us-rs5300trs5300tc-569398-rs28a500asr-aa-549695592"
-        ]
-      },
-      {
-        model: "RS27T5200SG",
-        brand: "Samsung",
-        fullName: "Samsung 27.4 cu. ft. Side-by-Side Refrigerator - Black Stainless Steel",
-        type: "Side-by-Side Refrigerator",
-        price: 7610,
-        qty: 1,
-        specs: { capacity: "27.4 cu ft", dimensions: "70.06\" H x 35.88\" W x 33.5\" D", color: "Black Stainless Steel" },
-        features: ["In-Door Ice Maker","External water & ice dispenser","All-Around Cooling","Fingerprint-resistant finish","Digital Inverter Compressor","ADA Compliant"],
-        images: [
-          "https://images.samsung.com/is/image/samsung/p6pim/us/rs27t5200sg-aa/gallery/us-ref-sbs-rs5300-569370-rs27t5200sg-aa-549691709"
-        ]
-      },
-      {
-        model: "LREN6325XE",
-        brand: "LG",
-        fullName: "LG 6.3 cu. ft. Smart ProBake Convection Electric Range with Air Fry & InstaView",
-        type: "Freestanding Electric Range",
-        price: 7264,
-        qty: 1,
-        specs: { capacity: "6.3 cu ft oven", dimensions: "46.5\" H x 29.88\" W x 26.75\" D", color: "PrintProof Stainless Steel" },
-        features: ["5 radiant heating elements","ProBake Convection system","Built-in Air Fry","InstaView knock-twice window","EasyClean 10-minute cycle","Wi-Fi / LG ThinQ app"],
-        images: [
-          "https://cdn.shopify.com/s/files/1/0740/2287/9488/files/LREN6325XE_p172595.jpg?v=1756244837",
-          "https://cdn.shopify.com/s/files/1/0740/2287/9488/files/LREN6325XE_p172595_166246.jpg?v=1756244837"
-        ]
-      },
-      {
-        model: "RS27T5200SR",
-        brand: "Samsung",
-        fullName: "Samsung 27.4 cu. ft. Side-by-Side Refrigerator - Stainless Steel",
-        type: "Side-by-Side Refrigerator",
-        price: 6918,
-        qty: 2,
-        specs: { capacity: "27.4 cu ft", dimensions: "70.06\" H x 35.88\" W x 33.5\" D", color: "Stainless Steel" },
-        features: ["In-Door Ice Maker","External water & ice dispenser","All-Around Cooling multi-vent","Fingerprint-resistant finish","Digital Inverter Compressor (10-yr warranty)","ENERGY STAR Certified"],
-        images: [
-          "https://cdn.shopify.com/s/files/1/0740/2287/9488/files/RS27T5200SR_p117299.jpg?v=1764529485"
-        ]
-      },
-      {
-        model: "FRSS2623AS",
-        brand: "Frigidaire",
-        fullName: "Frigidaire 25.6 cu. ft. Side-by-Side Refrigerator",
-        type: "Side-by-Side Refrigerator",
-        price: 6572,
-        qty: 1,
-        specs: { capacity: "25.6 cu ft", dimensions: "69.88\" H x 36.13\" W x 32.5\" D", color: "Stainless Steel" },
-        features: ["EvenTemp Cooling System","PurePour Water Filter","External water & ice dispenser","3 adjustable glass shelves","Fresh Storage Crispers","ENERGY STAR Certified"],
-        images: [
-          "https://cdn.shopify.com/s/files/1/0740/2287/9488/files/FRSS2623AS_p110716-1.jpg?v=1741254247",
-          "https://cdn.shopify.com/s/files/1/0740/2287/9488/files/FRSS2623AS_p110716_47943.jpg?v=1741254247"
-        ]
-      },
-      {
-        model: "FFUE2024AW",
-        brand: "Frigidaire",
-        fullName: "Frigidaire 20.0 cu. ft. Garage Ready Frost-Free Upright Freezer",
-        type: "Upright Freezer",
-        price: 5880,
-        qty: 1,
-        specs: { capacity: "20.0 cu ft", dimensions: "71.75\" H x 32.63\" W x 24.25\" D", color: "White" },
-        features: ["EvenTemp variable speed compressor","Garage-ready (0-110°F)","Frost-free auto defrost","Freeze Boost rapid freezing","4 adjustable glass shelves","ENERGY STAR Most Efficient"],
-        images: [
-          "https://cdn.shopify.com/s/files/1/0740/2287/9488/files/FFUE2024AW_p104460.webp?v=1760133130"
-        ]
-      },
-      {
-        model: "CFU21N6AWE",
-        brand: "Hisense",
-        fullName: "Hisense 21.2 cu. ft. Garage Ready Convertible Upright Freezer/Refrigerator",
-        type: "Convertible Upright Freezer",
-        price: 5534,
-        qty: 1,
-        specs: { capacity: "21.2 cu ft", dimensions: "76.3\" H x 32.7\" W x 28.9\" D", color: "White" },
-        features: ["Convertible freezer/refrigerator mode","Garage-ready (0-110°F)","No Frost technology","Fast Freeze function","5 in-door bins + 4 shelves","ENERGY STAR Certified"],
-        images: [
-          "https://www.appliancestorediscount.com/cdn/shop/files/imageService_9f9a289f-fb0e-4592-8d25-d476d00d4aac_1024x1024.webp?v=1718408353",
-          "https://www.appliancestorediscount.com/cdn/shop/files/IMG_4185_1024x1024.jpg?v=1718408365",
-          "https://www.appliancestorediscount.com/cdn/shop/files/IMG_4189_1024x1024.jpg?v=1718408365"
-        ]
-      },
-      {
-        model: "LRTLS2403S",
-        brand: "LG",
-        fullName: "LG 24 cu. ft. Top Freezer Refrigerator",
-        type: "Top-Freezer Refrigerator",
-        price: 5534,
-        qty: 1,
-        specs: { capacity: "23.8 cu ft", dimensions: "69\" H x 33\" W x 34\" D", color: "PrintProof Stainless Steel" },
-        features: ["Internal water dispenser","Multi-Air Flow technology","Spill Protector tempered glass shelves","Humidity-controlled crispers","Garage Ready (0-110°F)","ENERGY STAR Certified"],
-        images: [
-          "https://media.us.lg.com/transform/ecomm-PDPGallery-1100x730/12427e31-7e0e-484a-98e5-2c3e28251032/gram_Energy-Star_3000x3000"
-        ]
-      },
-      {
-        model: "RT70F18LASR",
-        brand: "Samsung",
-        fullName: "Samsung 18 cu. ft. Top Freezer Refrigerator with Ice Maker",
-        type: "Top-Freezer Refrigerator",
-        price: 4842,
-        qty: 1,
-        specs: { capacity: "18 cu ft", dimensions: "66.88\" H x 27.63\" W x 31.88\" D", color: "Stainless Steel" },
-        features: ["Built-in ice maker","All-Around Cooling","AI Inverter Compressor","Garage Ready (38-110°F)","Reversible door hinge","ENERGY STAR Certified"],
-        images: [
-          "https://images.samsung.com/is/image/samsung/p6pim/us/rt70f18lasraa/gallery/us-top-freezer-rt70f18lasraa----cu--ft--top-freezer-refrigerator-with-ice-maker-in-stainless-steel-silver-549708113",
-          "https://images.samsung.com/is/image/samsung/p6pim/us/rt70f18lasraa/gallery/us-top-freezer-rt70f18lasraa-rt70f18lasraa-aa-front-open-silver-549708114"
-        ]
-      },
-      {
-        model: "RZ11M7074SA",
-        brand: "Samsung",
-        fullName: "Samsung 11.4 cu. ft. Convertible Upright Freezer/Refrigerator with Drawers",
-        type: "Convertible Upright Freezer",
-        price: 4497,
-        qty: 1,
-        specs: { capacity: "11.4 cu ft", dimensions: "73\" H x 23.38\" W x 27.38\" D", color: "Stainless Look" },
-        features: ["Freezer/refrigerator convertible","3 shelves + 4 pull-out drawers","All-Around Cooling","Power Freeze (50 hours max)","Reversible door","Digital Inverter Compressor"],
-        images: [
-          "https://images.samsung.com/is/image/samsung/p6pim/us/rz11m7074sa-aa/gallery/us-refrigerator-rz11m7074sa-rz11m7074sa-aa-551270660",
-          "https://images.samsung.com/is/image/samsung/p6pim/us/rz11m7074sa-aa/gallery/us-refrigerator-rz11m7074sa-rz11m7074sa-aa-551270665"
-        ]
-      },
-      {
-        model: "MC17T8000CS",
-        brand: "Samsung",
-        fullName: "Samsung 1.7 cu. ft. Smart Over-the-Range Convection Microwave with Slim Fry",
-        type: "Over-the-Range Microwave",
-        price: 4358,
-        qty: 1,
-        specs: { capacity: "1.7 cu ft", dimensions: "16.94\" H x 29.88\" W x 16.63\" D", color: "Stainless Steel" },
-        features: ["950W cooking power","Convection + Slim Fry technology","300 CFM ventilation","Wi-Fi / SmartThings app","Voice control (Bixby, Alexa, Google)","ENERGY STAR Certified"],
-        images: [
-          "https://images.samsung.com/is/image/samsung/p6pim/us/mc17t8000cs-aa/gallery/us-me8000t-mc17t8000cs-aa-550675909",
-          "https://images.samsung.com/is/image/samsung/p6pim/us/mc17t8000cs-aa/gallery/us-me8000t-mc17t8000cs-aa-550421361"
-        ]
-      },
-      {
-        model: "CFU14N6AWE",
-        brand: "Hisense",
-        fullName: "Hisense 13.6 cu. ft. Garage Ready Convertible Upright Freezer",
-        type: "Convertible Upright Freezer",
-        price: 3113,
-        qty: 2,
-        specs: { capacity: "13.6 cu ft", dimensions: "72.4\" H x 29.5\" W x 29.1\" D", color: "White" },
-        features: ["Freezer/refrigerator convertible","No Frost technology","Garage Ready (0-110°F)","Super Freeze function","5 shelves + door bins","ENERGY STAR Certified"],
-        images: [
-          "https://www.appliancestorediscount.com/cdn/shop/files/imageService_9f9a289f-fb0e-4592-8d25-d476d00d4aac_1024x1024.webp?v=1718408353",
-          "https://www.appliancestorediscount.com/cdn/shop/files/IMG_4186_1024x1024.jpg?v=1718408364",
-          "https://www.appliancestorediscount.com/cdn/shop/files/IMG_4189_1024x1024.jpg?v=1718408365"
-        ]
-      },
-      {
-        model: "ME21DG6300SR",
-        brand: "Samsung",
-        fullName: "Samsung 2.1 cu. ft. Bespoke Smart Over-the-Range Microwave",
-        type: "Over-the-Range Microwave",
-        price: 3113,
-        qty: 1,
-        specs: { capacity: "2.1 cu ft", dimensions: "17.06\" H x 29.87\" W x 16.5\" D", color: "Stainless Steel" },
-        features: ["1000W cooking power","400 CFM 4-speed ventilation","Sensor cooking","Ceramic enamel interior","Wi-Fi / SmartThings app","Bespoke design line"],
-        images: [
-          "https://images.samsung.com/is/image/samsung/p6pim/us/me21dg6300sraa/gallery/us-me7500d-me21dg6300srac-me21dg6300sraa-549555597",
-          "https://images.samsung.com/is/image/samsung/p6pim/us/me21dg6300sraa/gallery/us-me7500d-me21dg6300srac-me21dg6300sraa-549555598"
-        ]
-      },
-      {
-        model: "HFU101N1AVE",
-        brand: "Hisense",
-        fullName: "Hisense 10.2 cu. ft. Garage Ready Convertible Upright Freezer",
-        type: "Convertible Upright Freezer",
-        price: 2975,
-        qty: 2,
-        specs: { capacity: "10.2 cu ft", dimensions: "66\" H x 23.5\" W x 26\" D", color: "Silver" },
-        features: ["Freezer/refrigerator convertible","No Frost technology","Garage Ready (0-110°F)","Seal Break Handle","Reversible door","ENERGY STAR Certified"],
-        images: [
-          "https://savewithstu.com/cdn/shop/files/4000353948-847__1.jpg?v=1774113727",
-          "https://static.wixstatic.com/media/e72bcf_5f08c8919acd484da0b8bef8d5603f21~mv2.jpg/v1/fit/w_500,h_500,q_90/file.jpg",
-          "https://static.wixstatic.com/media/e72bcf_b77e99fde3f644b58f9cead351f397ac~mv2.jpg/v1/fit/w_500,h_500,q_90/file.jpg"
-        ]
-      },
-      {
-        model: "LRONC0605V",
-        brand: "LG",
-        fullName: "LG 6 cu. ft. Single Door Compact Refrigerator",
-        type: "Compact Refrigerator",
-        price: 2698,
-        qty: 2,
-        specs: { capacity: "5.79 cu ft", dimensions: "44.62\" H x 20.62\" W x 21.87\" D", color: "Platinum Silver" },
-        features: ["Inverter compressor","2 tempered glass shelves","Large produce bin","LED lighting","Curved pocket handle","ENERGY STAR Certified"],
-        images: [
-          "https://cdn.shopify.com/s/files/1/0939/0057/0920/files/LRONC0605V_p121668.jpg?v=1749802025",
-          "https://cdn.shopify.com/s/files/1/0939/0057/0920/files/LRONC0605V_p121668_38882.jpg?v=1749802025",
-          "https://cdn.shopify.com/s/files/1/0939/0057/0920/files/LRONC0605V_p121668_38883.jpg?v=1749802025"
-        ]
-      }
-    ];
+<script>
+const products = [
+  {
+    model:"RF90F23AEW", brand:"Samsung",
+    fullName:"Samsung Bespoke 23 cu. ft. Counter Depth 4-Door French Door Refrigerator with AI Family Hub+",
+    type:"4-Door French Door Refrigerator", price:28000, qty:1,
+    specs:{capacity:"23 cu ft",dimensions:'70.25" H x 35.75" W x 28.75" D',color:"White Glass",weight:"310 lbs",energy:"ENERGY STAR Certified",compressor:"AI Inverter (10-Year Warranty)",cooling:"Triple Cooling",ice:"Dual Auto Ice Maker"},
+    features:["AI Family Hub+ with 32\" touchscreen","AI Vision Inside camera-based food recognition","Beverage Center with AutoFill Water Pitcher","FlexZone Drawer with 5 temperature settings","Auto Open Door sensor","AI Energy Mode - up to 10% savings","Bespoke customizable door panels","SmartThings Wi-Fi connectivity"],
+    images:[
+      "https://images.samsung.com/is/image/samsung/p6pim/us/rf90f23aewaa/gallery/us-bespoke-ai-refrigerator-fdr-family-hub™-and-ai-vision-inside-579983-rf90f23aewaa-551057132",
+      "https://images.samsung.com/is/image/samsung/p6pim/us/rf90f23aeceaa/gallery/us-bespoke-ai-refrigerator-fdr-family-hub™-and-ai-vision-inside-579983-rf90f23aeceaa-551057630",
+      "https://images.samsung.com/is/image/samsung/p6pim/us/rf90f23aecraa/gallery/us-bespoke-ai-refrigerator-fdr-family-hub™-and-ai-vision-inside-579983-rf90f23aecraa-551056565",
+      "https://imgres.tailbase.com/rzdimg/prods/800/854755_1.jpg",
+      "https://imgres.tailbase.com/rzdimg/prods/800/854755_2.jpg",
+      "https://imgres.tailbase.com/rzdimg/prods/800/854755_3.jpg",
+      "https://imgres.tailbase.com/rzdimg/prods/800/854755_4.jpg",
+      "https://imgres.tailbase.com/rzdimg/prods/800/854755_5.jpg"
+    ]
+  },
+  {
+    model:"LTGL6937F", brand:"LG",
+    fullName:"LG 6.9 cu. ft. Smart InstaView Double Oven Slide-In Gas Range with ProBake Convection & Air Fry",
+    type:"Slide-In Gas Range", price:25000, qty:2,
+    specs:{capacity:"6.9 cu ft total",dimensions:'36" H x 29.88" W x 29.27" D',color:"PrintProof Stainless Steel",burners:"5 sealed (22,000 BTU max)",oven:"Double oven (upper + lower)",energy:"ENERGY STAR Certified",cleaning:"EasyClean + Self-Clean",connectivity:"Wi-Fi / LG ThinQ"},
+    features:["UltraHeat 22,000 BTU dual-power burner","Center oval burner for griddle","ProBake Convection for even baking","Air Fry & Air Sous Vide","InstaView knock-twice window","SmoothTouch glass controls","PrintProof fingerprint-resistant finish","Google Assistant & Alexa compatible"],
+    images:[
+      "https://media.us.lg.com/transform/ecomm-PDPGallery-1100x730/41ae331a-88cc-4b26-b443-7ea5bf6271f4/md08003070-DZ-05-jpg",
+      "https://media.us.lg.com/transform/ecomm-PDPGallery-1100x730/06071fe2-ee4b-4341-be3e-2342deef97b5/md08003071-DZ-08-jpg",
+      "https://media.us.lg.com/transform/ecomm-PDPGallery-1100x730/d6181ec4-be85-4bfd-a503-d29437f1765e/md05752878-large08-jpg",
+      "https://images.webfronts.com/cache/frzimxaxevqn.jpg",
+      "https://images.webfronts.com/cache/rdbrdkvnhnpk.jpg"
+    ]
+  },
+  {
+    model:"RF23BB860012", brand:"Samsung",
+    fullName:"Samsung Bespoke 4-Door French Door Smart Refrigerator (23 cu. ft.) with Beverage Center",
+    type:"4-Door French Door Refrigerator", price:25000, qty:1,
+    specs:{capacity:"22.8 cu ft",dimensions:'70" H x 35.75" W x 28.75" D',color:"White Glass",weight:"295 lbs",energy:"ENERGY STAR Certified",cooling:"Triple Cooling Plus",ice:"Dual Ice Maker + Ice Bites",connectivity:"SmartThings Wi-Fi"},
+    features:["Beverage Center with AutoFill Water Pitcher","Dual Ice Maker (cubed + Ice Bites)","FlexZone Drawer with 5 temp settings","Bespoke customizable door panels","Flat panel door with recessed handles","SmartThings app - door alerts, filter notifications","Counter-depth for built-in look","ADA Compliant"],
+    images:[
+      "https://images.samsung.com/is/image/samsung/p6pim/us/rf23bb860012aa/gallery/us-counter-depth-4-door-french-door-beverage-center-rf23bb860012aa-551015703",
+      "https://imgres.tailbase.com/rzdimg/prods/800/720398_1.jpg",
+      "https://imgres.tailbase.com/rzdimg/prods/800/720398_2.jpg",
+      "https://imgres.tailbase.com/rzdimg/prods/800/720398_3.jpg",
+      "https://imgres.tailbase.com/rzdimg/prods/800/720398_4.jpg",
+      "https://imgres.tailbase.com/rzdimg/prods/800/720398_5.jpg"
+    ]
+  },
+  {
+    model:"RF90F29AECR", brand:"Samsung",
+    fullName:"Samsung Bespoke 29 cu. ft. 4-Door French Door Refrigerator with AI Family Hub+",
+    type:"4-Door French Door Refrigerator", price:25000, qty:1,
+    specs:{capacity:"29 cu ft",dimensions:'70.25" H x 35.75" W x 34.25" D',color:"Charcoal Glass / Stainless Steel",energy:"ENERGY STAR Certified",compressor:"AI Inverter (10-Year Warranty)",cooling:"Triple Cooling",ice:"Dual Auto Ice Maker",connectivity:"SmartThings Wi-Fi"},
+    features:["AI Family Hub+ with 32\" touchscreen","AI Vision Inside camera recognition","Beverage Center with AutoFill Pitcher","FlexZone Drawer with 5 settings","AI Energy Mode for savings","Bespoke customizable panels","Standard depth design","Auto Open Door"],
+    images:[
+      "https://images.samsung.com/is/image/samsung/p6pim/us/rf90f29aecraa/gallery/us-french-door-rf90f29aecraa-bespoke-ai---door-french-door-charcoal-glass-stainless-steel-551059747",
+      "https://imgres.tailbase.com/rzdimg/prods/800/854773_1.jpg",
+      "https://imgres.tailbase.com/rzdimg/prods/800/854773_2.jpg",
+      "https://imgres.tailbase.com/rzdimg/prods/800/854773_3.jpg",
+      "https://imgres.tailbase.com/rzdimg/prods/800/854773_4.jpg",
+      "https://imgres.tailbase.com/rzdimg/prods/800/854773_5.jpg",
+      "https://imgres.tailbase.com/rzdimg/prods/800/854773_6.jpg"
+    ]
+  },
+  {
+    model:"LRYXC2606S", brand:"LG",
+    fullName:"LG 26 cu. ft. Smart Counter-Depth MAX French Door Refrigerator with Four Types of Ice",
+    type:"French Door Refrigerator", price:18000, qty:1,
+    specs:{capacity:"26 cu ft",dimensions:'70.25" H x 35.75" W x 29.12" D',color:"PrintProof Stainless Steel",energy:"ENERGY STAR Certified",ice:"4 types incl. Craft Ice spheres",dispenser:"UVnano dispenser",connectivity:"Wi-Fi / LG ThinQ",compliance:"ADA Compliant"},
+    features:["Four types of ice: cubed, crushed, mini cubed, Craft Ice","InstaView knock-twice glass panel","LED-lit pocket handles with proximity sensors","Counter-depth built-in look","Glide N' Serve drawer","Multi-Air Flow System","UVnano dispenser sanitization","Google Assistant & Alexa compatible"],
+    images:[
+      "https://media.us.lg.com/transform/ecomm-PDPGallery-1100x730/0536ef64-a1db-46e3-a9a0-0a39375eccdb/LRYKC2606S_gallery_new3_5000x5000",
+      "https://media.us.lg.com/transform/ecomm-PDPGallery-1100x730/28e89ceb-da12-401c-a811-09ec59ae62eb/EnergyStar_gallery_1600x1600",
+      "https://www.lg.com/content/dam/channel/wcms/ca_en/images/refrigerators/md07575980/gallery/DZ-01.jpg",
+      "https://www.lg.com/content/dam/channel/wcms/ca_en/images/refrigerators/md07575980/gallery/DZ-02.jpg",
+      "https://www.lg.com/content/dam/channel/wcms/ca_en/images/refrigerators/md07575980/gallery/DZ-03.jpg",
+      "https://www.lg.com/content/dam/channel/wcms/ca_en/d2c-content/hs/refrigerator/ca-en-ref14-frenchdoor-lryxc2606s/gallery/2010x1334/lg-refrigerator-LRYXC2606S-add-1-2010.jpg",
+      "https://www.lg.com/content/dam/channel/wcms/ca_en/d2c-content/hs/refrigerator/ca-en-ref14-frenchdoor-lryxc2606s/gallery/2010x1334/lg-refrigerator-LRYXC2606S-add-2-2010.jpg"
+    ]
+  },
+  {
+    model:"LRFXS3106S", brand:"LG",
+    fullName:"LG 30.7 cu. ft. Smart Standard-Depth MAX French Door Refrigerator with Dual Ice Maker",
+    type:"French Door Refrigerator", price:20000, qty:1,
+    specs:{capacity:"30.7 cu ft",dimensions:'36.88" W x 70" H x 33" D',color:"PrintProof Stainless Steel",energy:"ENERGY STAR Certified (755 kWh/yr)",ice:"Dual Ice Maker",cooling:"Door Cooling+",connectivity:"Wi-Fi / LG ThinQ",compliance:"ADA Compliant"},
+    features:["Dual Ice Maker (in-door + in-freezer)","Tall Ice & Water Dispenser","Door Cooling+ technology","3-Tier Organization Freezer","Glide N' Serve drawer","SmartDiagnosis","PrintProof fingerprint-resistant","Google Assistant & Alexa"],
+    images:[
+      "https://media.us.lg.com/transform/ecomm-PDPGallery-1100x730/0b3e9f80-cf24-4b5d-9d9f-7a4a9a41baff/Refrigerator_LRFXS3106S_lg-largest-badge_gallery_01_5000x5000",
+      "https://imgres.tailbase.com/rzdimg/prods/800/776963_1.jpg",
+      "https://imgres.tailbase.com/rzdimg/prods/800/776963_2.jpg",
+      "https://imgres.tailbase.com/rzdimg/prods/800/776963_3.jpg",
+      "https://imgres.tailbase.com/rzdimg/prods/800/776963_4.jpg",
+      "https://imgres.tailbase.com/rzdimg/prods/800/776963_5.jpg",
+      "https://www.lg.com/content/dam/channel/wcms/ca_en/images/refrigerators/lrfxs3106s/gallery/DZ-01.jpg",
+      "https://www.lg.com/content/dam/channel/wcms/ca_en/images/refrigerators/lrfxs3106s/gallery/DZ-02.jpg"
+    ]
+  },
+  {
+    model:"LF29S8330S", brand:"LG",
+    fullName:"LG 29 cu. ft. Smart Standard-Depth MAX 4-Door French Door Refrigerator with Full-Convert Drawer",
+    type:"4-Door French Door Refrigerator", price:17000, qty:1,
+    specs:{capacity:"28.6 cu ft",dimensions:'35.75" W x 34.38" D x 70.25" H',color:"PrintProof Stainless Steel",energy:"ENERGY STAR Certified",ice:"Dual Ice Maker",drawer:"Full-Convert (5 settings)",compressor:"Smart Inverter (BLDC)",connectivity:"Wi-Fi / LG ThinQ"},
+    features:["Full-Convert Drawer with 5 temp settings","Dual Ice Maker with Tall Dispenser","SmartPull Pocket Handle","Slam-Resistant soft-close doors","Linear Cooling for consistent temp","Smart Inverter Compressor","Wi-Fi / LG ThinQ app","Google Assistant & Alexa"],
+    images:[
+      "https://media.us.lg.com/transform/ecomm-PDPGallery-1100x730/0a83d563-f09d-4d45-b9e5-0f5c8cdd6dad/LF29S8330S_gallery_9_5000x5000",
+      "https://imgres.tailbase.com/rzdimg/prods/800/771103_1.jpg",
+      "https://imgres.tailbase.com/rzdimg/prods/800/771103_2.jpg",
+      "https://imgres.tailbase.com/rzdimg/prods/800/771103_3.jpg",
+      "https://imgres.tailbase.com/rzdimg/prods/800/771103_4.jpg",
+      "https://imgres.tailbase.com/rzdimg/prods/800/771103_5.jpg",
+      "https://www.lg.com/content/dam/channel/wcms/ca_en/images/refrigerators/lf29s8330s_astcna0_enci_ca_en_c/D-1.jpg",
+      "https://www.lg.com/content/dam/channel/wcms/ca_en/images/refrigerators/lf29s8330s_astcna0_enci_ca_en_c/D-2.jpg"
+    ]
+  },
+  {
+    model:"RF29BB8600QL", brand:"Samsung",
+    fullName:"Samsung Bespoke 29 cu. ft. 4-Door French Door Smart Refrigerator with Beverage Center",
+    type:"4-Door French Door Refrigerator", price:20000, qty:2,
+    specs:{capacity:"28.8 cu ft",dimensions:'35.75" W x 34.25" D x 70" H',color:"Stainless Steel (Bespoke)",energy:"ENERGY STAR Certified",cooling:"Twin Cooling Plus",ice:"Dual Ice Maker + Ice Bites",drawer:"FlexZone (5 settings)",connectivity:"SmartThings Wi-Fi"},
+    features:["Beverage Center with AutoFill Pitcher","Dual Ice Maker (cubed + Ice Bites)","FlexZone Drawer (5 settings)","Twin Cooling Plus technology","Bespoke customizable panels","SmartThings app control","ADA Compliant","Flat panel recessed handles"],
+    images:[
+      "https://images.samsung.com/is/image/samsung/p6pim/us/rf29bb8600qlaa/gallery/us-4-door-french-door-beverage-center-rf29bb8600qlaa-551019964",
+      "https://imgres.tailbase.com/rzdimg/prods/800/720402_1.jpg",
+      "https://imgres.tailbase.com/rzdimg/prods/800/720402_2.jpg",
+      "https://imgres.tailbase.com/rzdimg/prods/800/720402_3.jpg",
+      "https://imgres.tailbase.com/rzdimg/prods/800/720402_4.jpg",
+      "https://imgres.tailbase.com/rzdimg/prods/800/720402_5.jpg"
+    ]
+  },
+  {
+    model:"LF29H8330S", brand:"LG",
+    fullName:"LG 29 cu. ft. Smart Standard-Depth MAX 4-Door French Door Refrigerator (Dual Handle)",
+    type:"4-Door French Door Refrigerator", price:14873, qty:1,
+    specs:{capacity:"28.6 cu ft",dimensions:'35.75" W x 34.38" D x 70.25" H',color:"PrintProof Stainless Steel",energy:"ENERGY STAR Certified",drawer:"Full-Convert (5 settings)",ice:"Dual Ice Maker",compressor:"Smart Inverter (BLDC)",compliance:"ADA Compliant"},
+    features:["Full-Convert Drawer (5 settings)","Dual Ice Maker with Dispenser","Dual bar handle design","Slam-Resistant soft-close doors","6 door bins, 4 fixed split shelves","Cool Guard Crisper Bins","Linear Cooling technology","Wi-Fi / LG ThinQ app"],
+    images:[
+      "https://media.us.lg.com/transform/ecomm-PDPGallery-1100x730/018e9e55-146a-452f-bd2d-82f2698302a5/LF29H8330S_gallery_3_5000x5000",
+      "https://images.webfronts.com/cache/frlvqyxqdkkt.jpg",
+      "https://images.webfronts.com/cache/rdgwspeyueva.jpg",
+      "https://images.webfronts.com/cache/frxndnkngcmq.jpg",
+      "https://media.us.lg.com/transform/ecomm-PDPGallery-1100x730/26147d43-451f-4d90-8bcc-4b72099acb55/LF29H8330D_gallery_5_5000x5000"
+    ]
+  },
+  {
+    model:"LCFC26XSS", brand:"LG",
+    fullName:"LG 26 cu. ft. Smart Counter-Depth MAX French Door Refrigerator",
+    type:"French Door Refrigerator", price:14182, qty:1,
+    specs:{capacity:"25.5 cu ft",dimensions:'35.75" W x 29.13" D x 70.25" H',color:"PrintProof Stainless Steel",energy:"ENERGY STAR Certified (699 kWh/yr)",cooling:"Door Cooling+",ice:"Ice & Water Dispenser",compressor:"Smart Inverter (BLDC)",connectivity:"Wi-Fi / LG ThinQ"},
+    features:["Counter-Depth MAX flush cabinet fit","InstaView Door-in-Door (knock twice)","Door Cooling+ technology","Dual Cooling system","Ice & Water Dispenser","Fingerprint resistant finish","SmartDiagnosis","Google Assistant & Alexa"],
+    images:[
+      "https://media.us.lg.com/transform/ecomm-PDPGallery-1100x730/0b1c3f2f-04ad-4356-b6d9-221c374306ec/LCFC26XSS_gallery_5_5000x5000",
+      "https://www.lg.com/content/dam/channel/wcms/ca_en/images/refrigerators/lcfc26xss/DZ-1.jpg",
+      "https://www.lg.com/content/dam/channel/wcms/ca_en/images/refrigerators/lcfc26xss/DZ-2.jpg",
+      "https://www.lg.com/content/dam/channel/wcms/ca_en/images/refrigerators/lcfc26xss/DZ-3.jpg",
+      "https://www.lg.com/content/dam/channel/wcms/ca_en/images/refrigerators/lcfc26xss/DZ-4.jpg",
+      "https://www.lg.com/content/dam/channel/wcms/ca_en/images/refrigerators/lcfc26xss/DZ-5.jpg",
+      "https://www.lg.com/content/dam/channel/wcms/ca_en/d2c-content/hs/refrigerator/ca-en-ref21-frenchdoor-lcfc26xss/gallery/2010x1334/lg-refrigerator-LCFC26XSS-add-1-2010.jpg"
+    ]
+  },
+  {
+    model:"LF30S8210S", brand:"LG",
+    fullName:"LG 30 cu. ft. Smart Standard-Depth MAX 4-Door French Door Refrigerator with Full-Convert Drawer",
+    type:"4-Door French Door Refrigerator", price:13836, qty:2,
+    specs:{capacity:"29.6 cu ft",dimensions:'35.75" W x 34.38" D x 70.25" H',color:"PrintProof Stainless Steel",energy:"ENERGY STAR Certified",drawer:"Full-Convert (5 settings)",dispenser:"Internal Water Dispenser",compressor:"Smart Inverter (BLDC)",connectivity:"Wi-Fi / LG ThinQ"},
+    features:["Full-Convert Drawer (5 settings)","Internal Water Dispenser","Pocket Handle design","Slam-Resistant soft-close doors","Cool Guard technology","Linear Cooling","Fingerprint Resistant","Google Assistant & Alexa"],
+    images:[
+      "https://media.us.lg.com/transform/ecomm-PDPGallery-1100x730/01277795-e6c7-4545-8ad2-ff852686c739/LF30S8210S_gallery_9_5000x5000",
+      "https://www.lg.com/content/dam/channel/wcms/ca_en/images/refrigerators/lf30s8210s_astcna0_enci_ca_en_c/DT-1.jpg",
+      "https://www.lg.com/content/dam/channel/wcms/ca_en/images/refrigerators/lf30s8210s_astcna0_enci_ca_en_c/DT-2.jpg",
+      "https://www.lg.com/content/dam/channel/wcms/ca_en/images/refrigerators/lf30s8210s_astcna0_enci_ca_en_c/DT-3.jpg",
+      "https://imgres.tailbase.com/rzdimg/prods/800/776958_1.jpg",
+      "https://imgres.tailbase.com/rzdimg/prods/800/776958_2.jpg",
+      "https://www.lg.com/content/dam/channel/wcms/ca_en/d2c-content/hs/refrigerator/ca-en-ref19-frenchdoor-lf30s8210s/gallery/2010x1334/lg-refrigerator-LF30S8210S-add-1-2010.jpg"
+    ]
+  },
+  {
+    model:"LF25Z6211S", brand:"LG",
+    fullName:"LG 25 cu. ft. Counter-Depth MAX with Zero Clearance 3-Door French Door Refrigerator",
+    type:"French Door Refrigerator", price:13836, qty:3,
+    specs:{capacity:"25.1 cu ft",dimensions:'35.75" W x 27.5" D x 70.25" H',color:"PrintProof Stainless Steel",energy:"ENERGY STAR Certified (632 kWh/yr)",hinge:"Zero Clearance Hinge System",ice:"Slim SpacePlus Ice System",compressor:"Smart Inverter (BLDC)",compliance:"ADA Compliant"},
+    features:["Zero Clearance Hinge System","Counter-Depth MAX ultra-shallow (27.5\" deep)","45% thinner door for built-in look","Internal Water Dispenser","Slim SpacePlus Ice System","Glide N' Serve Drawer","6 adjustable door bins","Google Assistant & Alexa"],
+    images:[
+      "https://media.us.lg.com/transform/ecomm-PDPGallery-1100x730/001f75cc-9b46-4d0b-a37e-3ffe6fde55e2/Refrigerator-LF25Z6211S-gallery-09_5000x5000",
+      "https://imgres.tailbase.com/rzdimg/prods/800/855801_1.jpg",
+      "https://imgres.tailbase.com/rzdimg/prods/800/855801_2.jpg",
+      "https://imgres.tailbase.com/rzdimg/prods/800/855801_3.jpg",
+      "https://imgres.tailbase.com/rzdimg/prods/800/855801_4.jpg",
+      "https://imgres.tailbase.com/rzdimg/prods/800/855801_5.jpg",
+      "https://www.lg.com/content/dam/channel/wcms/ca_en/images/refrigerators/lf25z6211s/gallery/gallery-new/DZ-01.jpg",
+      "https://www.lg.com/content/dam/channel/wcms/ca_en/d2c-content/hs/refrigerator/ca-en-ref39-frenchdoor-lf25z6211s/gallery/2010x1334/lg-refrigerator-LF25Z6211S-add-1-2010.jpg"
+    ]
+  },
+  {
+    model:"46-73022", brand:"Kenmore",
+    fullName:"Kenmore 73022 26.1 Cu. Ft. French Door Refrigerator with Ice Maker",
+    type:"French Door Refrigerator", price:12798, qty:1,
+    specs:{capacity:"26.1 cu ft",dimensions:'69.84" H x 35.98" W x 35.38" D',color:"White",energy:"ENERGY STAR Certified",cooling:"Dual evaporator",ice:"Built-in ice maker",shelves:"Adjustable glass shelves",drawer:"Full-width pantry drawer"},
+    features:["Bottom-mount freezer drawer","Built-in ice maker","Dual evaporator cooling","Humidity-controlled crisper","Full-width pantry drawer","Gallon-sized door bins","LED interior lighting","Adjustable glass shelves"],
+    images:[
+      "https://stlapplianceoutlet.com/cdn/shop/files/Screenshot2023-10-20095745.png?v=1697814532",
+      "https://i.ebayimg.com/images/g/7WgAAOSwQ7haxTU1/s-l1600.jpg"
+    ]
+  },
+  {
+    model:"RF30BB660012", brand:"Samsung",
+    fullName:"Samsung Bespoke 3-Door French Door Refrigerator (30 cu. ft.) with Beverage Center",
+    type:"French Door Refrigerator", price:12452, qty:1,
+    specs:{capacity:"30 cu ft",dimensions:'70" H x 35.75" W x 34.25" D',color:"White Glass (Bespoke)",energy:"ENERGY STAR Certified",cooling:"Twin Cooling Plus",ice:"Dual Auto Ice Maker + Ice Bites",connectivity:"SmartThings Wi-Fi",mode:"AI Energy Mode"},
+    features:["Beverage Center with AutoFill Pitcher","Dual Auto Ice Maker (cubed + Ice Bites)","Twin Cooling Plus technology","Bespoke customizable panels","AI Energy mode (10% savings)","Flat panel recessed handles","Standard depth design","SmartThings app"],
+    images:[
+      "https://images.samsung.com/is/image/samsung/p6pim/us/rf30bb660012aa/gallery/us-3-door-french-door-beverage-center-rf30bb660012aa-551021067",
+      "https://images.samsung.com/is/image/samsung/p6pim/us/rf30bb6600qlaa/gallery/us-french-door-rf30bb6600qlaa-bespoke-ai---door-french-door-silver-551021028",
+      "https://images.samsung.com/is/image/samsung/p6pim/us/rf24bb6600qlaa/gallery/us-counter-depth-3-door-french-door-beverage-center-rf24bb6600qlaa-551016513"
+    ]
+  },
+  {
+    model:"RF23B7671SR", brand:"Samsung",
+    fullName:"Samsung 23 Cu. Ft. Smart Counter Depth 4-Door Flex Refrigerator with Beverage Center",
+    type:"4-Door Flex Refrigerator", price:11760, qty:1,
+    specs:{capacity:"23 cu ft",dimensions:'70" H x 35.88" W x 28.5" D',color:"Stainless Steel",energy:"ENERGY STAR Certified",cooling:"Twin Cooling Plus",ice:"Dual Ice Maker + Ice Bites",drawer:"FlexZone (fridge or freezer)",filter:"UV Deodorizing Filter"},
+    features:["Beverage Center with AutoFill Pitcher","Dual Ice Maker (cubed + Ice Bites)","FlexZone drawer (fridge or freezer mode)","UV Deodorizing Filter","CleanGuard antimicrobial handles","Counter-depth flat-door design","Flex Crisper (2 temp settings)","SmartThings app"],
+    images:[
+      "https://images.samsung.com/is/image/samsung/p6pim/us/rf23b7671sr-aa/gallery/us-4-door-flex-rf23b7671sr-aa-531811336",
+      "https://images.samsung.com/is/image/samsung/p6pim/us/rf23b7671sr-aa/gallery/us-4-door-flex-rf23b7671sr-aa-531811337",
+      "https://bestremodelinghome.com/cdn/shop/files/FullSizeRender_f9b85a1f-d897-45dc-907e-adec88823ae3.jpg?v=1718113473",
+      "https://bestremodelinghome.com/cdn/shop/files/FullSizeRender_fc8791ab-7e49-433b-a2f7-f99362c4fc5f.jpg?v=1718113473",
+      "https://olaretaildeals.com/cdn/shop/products/6448502_sd_15828e77-e558-49bf-bbd2-62ed91fce40d_1024x1024.jpg?v=1679343490",
+      "https://olaretaildeals.com/cdn/shop/products/IMG_3317_075db17b-cd35-49cb-bea7-082b6d1adbf0_1800x1800.jpg?v=1679344324"
+    ]
+  },
+  {
+    model:"LSIL6334XE", brand:"LG",
+    fullName:"LG 6.3 Cu. Ft. Smart Induction Slide-In Range with ProBake Convection and Air Fry",
+    type:"Slide-In Induction Range", price:11760, qty:1,
+    specs:{capacity:"6.3 cu ft oven",dimensions:'36.5" H x 29.88" W x 29.31" D',color:"PrintProof Stainless Steel",elements:"4 induction (up to 3900W)",energy:"ENERGY STAR Certified",cleaning:"EasyClean + Self-Clean",connectivity:"ThinQ Wi-Fi",compliance:"Sabbath Mode"},
+    features:["4 induction elements (up to 3900W UltraHeat)","ProBake Convection rear heating","Air Fry capability","WideView Window","EasyClean + Self-Clean modes","ThinQ Wi-Fi scan-to-cook","Flex Control Knobs","Storage drawer"],
+    images:[
+      "https://media.us.lg.com/transform/ecomm-PDPGallery-1100x730/256a7977-aa4a-46a7-b3b4-9e197fe5d4e3/Ranges_LSIL6334XE_gallery_05_new_2500x2500",
+      "https://www.lg.com/content/dam/channel/wcms/ca_en/images/ranges-ovens/lsil6334xe/gallery/DZ-01.jpg",
+      "https://www.lg.com/content/dam/channel/wcms/ca_en/images/ranges-ovens/lsil6334xe/gallery/DZ-02.jpg",
+      "https://www.lg.com/content/dam/channel/wcms/ca_en/images/ranges-ovens/lsil6334xe/gallery/DZ-03.jpg",
+      "https://www.lg.com/content/dam/channel/wcms/ca_en/images/ranges-ovens/lsil6334xe/gallery/DZ-04.jpg",
+      "https://www.lg.com/content/dam/channel/wcms/ca_en/images/ranges-ovens/lsil6334xe/gallery/DZ-05.jpg",
+      "https://www.lg.com/content/dam/channel/wcms/ca_en/images/ranges-ovens/lsil6334xe/gallery/DZ-06.jpg"
+    ]
+  },
+  {
+    model:"RF32CG5400SR", brand:"Samsung",
+    fullName:"Samsung 31 Cu. Ft. Mega Capacity 3-Door French Door Refrigerator with Four Types of Ice",
+    type:"French Door Refrigerator", price:8993, qty:1,
+    specs:{capacity:"31 cu ft",dimensions:'70" H x 35.75" W x 36.25" D',color:"Stainless Steel",energy:"ENERGY STAR Certified",ice:"4 types (cubed, Ice Bites, curved, crushed)",cooling:"All-Around Cooling",connectivity:"SmartThings Wi-Fi",compliance:"ADA Compliant"},
+    features:["Four types of ice","Dual Auto Ice Maker","All-Around Cooling multi-vent","Slide-In shelf for large items","SmartThings app control","AI Energy Mode","Star-K Certified","Digital Inverter Compressor"],
+    images:[
+      "https://cdn.shopify.com/s/files/1/0740/2287/9488/files/RF32CG5400SR_p117290-1.jpg?v=1741301326",
+      "https://cdn.shopify.com/s/files/1/0740/2287/9488/files/RF32CG5400SR_p117290_125008.webp?v=1749572446",
+      "https://cdn.shopify.com/s/files/1/0740/2287/9488/files/RF32CG5400SR_p117290_125009.webp?v=1749572446",
+      "https://cdn.shopify.com/s/files/1/0740/2287/9488/files/RF32CG5400SR_p117290_125010.webp?v=1749572446",
+      "https://cdn.shopify.com/s/files/1/0740/2287/9488/files/RF32CG5400SR_p117290_125011.webp?v=1749572446",
+      "https://cdn.shopify.com/s/files/1/0740/2287/9488/files/RF32CG5400SR_p117290_125012.webp?v=1749572446",
+      "https://images.samsung.com/is/image/samsung/p6pim/us/rf32cg5400sraa/gallery/us--rf32cg5400sraa-550242560"
+    ]
+  },
+  {
+    model:"RS28A500ASR", brand:"Samsung",
+    fullName:"Samsung 28 Cu. Ft. Smart Side-by-Side Refrigerator",
+    type:"Side-by-Side Refrigerator", price:8647, qty:1,
+    specs:{capacity:"28 cu ft",dimensions:'70.06" H x 35.88" W x 33.5" D',color:"Stainless Steel",energy:"ENERGY STAR Certified",cooling:"All-Around Cooling",ice:"In-Door Ice Maker",compressor:"Digital Inverter (10-yr warranty)",connectivity:"SmartThings Wi-Fi"},
+    features:["In-Door Ice Maker","All-Around Cooling multi-vent","Flat panel recessed handles","SmartThings app control","Glass shelving","Gallon door storage","LED lighting","ADA Compliant"],
+    images:[
+      "https://cdn.shopify.com/s/files/1/0740/2287/9488/files/RS28A500ASR_p114957.jpg?v=1757744608",
+      "https://cdn.shopify.com/s/files/1/0740/2287/9488/files/RS28A500ASR_p114957_125155.webp?v=1757744608",
+      "https://cdn.shopify.com/s/files/1/0740/2287/9488/files/RS28A500ASR_p114957_125156.webp?v=1757744608",
+      "https://cdn.shopify.com/s/files/1/0740/2287/9488/files/RS28A500ASR_p114957_125157.webp?v=1757744608",
+      "https://cdn.shopify.com/s/files/1/0740/2287/9488/files/RS28A500ASR_p114957_125158.webp?v=1757744608",
+      "https://cdn.shopify.com/s/files/1/0740/2287/9488/files/RS28A500ASR_p114957_125159.webp?v=1757744608",
+      "https://images.samsung.com/is/image/samsung/p6pim/us/rs28a500asr-aa/gallery/us-rs5300trs5300tc-569398-rs28a500asr-aa-549695591"
+    ]
+  },
+  {
+    model:"RS27T5200SG", brand:"Samsung",
+    fullName:"Samsung 27.4 cu. ft. Side-by-Side Refrigerator - Black Stainless Steel",
+    type:"Side-by-Side Refrigerator", price:7610, qty:1,
+    specs:{capacity:"27.4 cu ft",dimensions:'70.06" H x 35.88" W x 33.5" D',color:"Black Stainless Steel",energy:"ENERGY STAR Certified",cooling:"All-Around Cooling",ice:"In-Door Ice Maker",compressor:"Digital Inverter (10-yr warranty)",compliance:"ADA Compliant"},
+    features:["In-Door Ice Maker","External water & ice dispenser","All-Around Cooling","Fingerprint-resistant finish","4 tempered glass shelves","2 clear drawers","LED lighting","Digital Inverter Compressor"],
+    images:[
+      "https://images.samsung.com/is/image/samsung/p6pim/us/rs27t5200sg-aa/gallery/us-ref-sbs-rs5300-569370-rs27t5200sg-aa-549691709",
+      "https://images.samsung.com/is/image/samsung/p6pim/us/rs27t5200sg-aa/gallery/us-ref-sbs-rs5300-569370-rs27t5200sg-aa-549692122",
+      "https://images.samsung.com/is/image/samsung/p6pim/us/rs27t5200sg-aa/gallery/us-ref-sbs-rs5300-569370-rs27t5200sg-aa-549692180",
+      "https://images.samsung.com/is/image/samsung/p6pim/us/rs27t5200sg-aa/gallery/us-ref-sbs-rs5300-569370-rs27t5200sg-aa-549692187",
+      "https://images.samsung.com/is/image/samsung/p6pim/us/rs27t5200sg-aa/gallery/us-ref-sbs-rs5300-569370-rs27t5200sg-aa-549692191",
+      "https://images.samsung.com/is/image/samsung/p6pim/us/rs27t5200sg-aa/gallery/us-ref-sbs-rs5300-569370-rs27t5200sg-aa-549692203",
+      "https://samsungparts.com/cdn/shop/products/rs27t5200sg_01_black_retail5e3870ce54fd56.04540213_710a5.jpg?v=1698844263"
+    ]
+  },
+  {
+    model:"LREN6325XE", brand:"LG",
+    fullName:"LG 6.3 cu. ft. Smart ProBake Convection Electric Range with Air Fry & InstaView",
+    type:"Freestanding Electric Range", price:7264, qty:1,
+    specs:{capacity:"6.3 cu ft oven",dimensions:'46.5" H x 29.88" W x 26.75" D',color:"PrintProof Stainless Steel",elements:"5 radiant (100W-3,200W)",energy:"ENERGY STAR Certified",cleaning:"EasyClean 10-min cycle",connectivity:"Wi-Fi / LG ThinQ",compliance:"Sabbath Mode"},
+    features:["5 radiant heating elements","ProBake Convection system","Built-in Air Fry","InstaView knock-twice window","EasyClean 10-minute cycle","Edge-to-edge glass cooktop","Storage drawer","Google Assistant & Alexa"],
+    images:[
+      "https://cdn.shopify.com/s/files/1/0740/2287/9488/files/LREN6325XE_p172595.jpg?v=1756244837",
+      "https://cdn.shopify.com/s/files/1/0740/2287/9488/files/LREN6325XE_p172595_166246.jpg?v=1756244837",
+      "https://cdn.shopify.com/s/files/1/0740/2287/9488/files/LREN6325XE_p172595_166247.jpg?v=1756244837",
+      "https://cdn.shopify.com/s/files/1/0740/2287/9488/files/LREN6325XE_p172595_166248.jpg?v=1756244837",
+      "https://cdn.shopify.com/s/files/1/0740/2287/9488/files/LREN6325XE_p172595_166249.jpg?v=1756244837",
+      "https://cdn.shopify.com/s/files/1/0740/2287/9488/files/LREN6325XE_p172595_166250.jpg?v=1756244837",
+      "https://media.us.lg.com/transform/ecomm-PDPGallery-1100x730/089c9e7d-e60f-4b17-9527-719d990271c4/Ranges_LREN6325XE_Infographic_gallery-03_5000x5000"
+    ]
+  },
+  {
+    model:"RS27T5200SR", brand:"Samsung",
+    fullName:"Samsung 27.4 cu. ft. Side-by-Side Refrigerator - Stainless Steel",
+    type:"Side-by-Side Refrigerator", price:6918, qty:2,
+    specs:{capacity:"27.4 cu ft",dimensions:'70.06" H x 35.88" W x 33.5" D',color:"Stainless Steel",energy:"ENERGY STAR Certified (728 kWh/yr)",cooling:"All-Around Cooling",ice:"In-Door Ice Maker",compressor:"Digital Inverter (10-yr warranty)",compliance:"ADA Compliant"},
+    features:["In-Door Ice Maker","External water & ice dispenser","All-Around Cooling multi-vent","Fingerprint-resistant finish","4 tempered glass shelves","LED lighting","Digital Inverter Compressor","SmartThings compatible"],
+    images:[
+      "https://images.samsung.com/is/image/samsung/p6pim/us/rs27t5200sr-aa/gallery/us-ref-sbs-rs5300-569370-rs27t5200sr-aa-549692350",
+      "https://images.samsung.com/is/image/samsung/p6pim/us/rs27t5200sr-aa/gallery/us-ref-sbs-rs5300-569370-rs27t5200sr-aa-549692404",
+      "https://images.samsung.com/is/image/samsung/p6pim/us/rs27t5200sr-aa/gallery/us-ref-sbs-rs5300-569370-rs27t5200sr-aa-549692444",
+      "https://images.samsung.com/is/image/samsung/p6pim/us/rs27t5200sr-aa/gallery/us-ref-sbs-rs5300-569370-rs27t5200sr-aa-549692448",
+      "https://images.samsung.com/is/image/samsung/p6pim/us/rs27t5200sr-aa/gallery/us-ref-sbs-rs5300-569370-rs27t5200sr-aa-549692461",
+      "https://images.samsung.com/is/image/samsung/p6pim/us/rs27t5200sr-aa/gallery/us-ref-sbs-rs5300-569370-rs27t5200sr-aa-549692481",
+      "https://samsungparts.com/cdn/shop/products/rs27t5200sr_01_silver_retail5e3872b785b7c6.98459569_68820.jpg?v=1698844265"
+    ]
+  },
+  {
+    model:"FRSS2623AS", brand:"Frigidaire",
+    fullName:"Frigidaire 25.6 cu. ft. Side-by-Side Refrigerator",
+    type:"Side-by-Side Refrigerator", price:6572, qty:1,
+    specs:{capacity:"25.6 cu ft",dimensions:'69.88" H x 36.13" W x 32.5" D',color:"Stainless Steel",energy:"ENERGY STAR Certified (647 kWh/yr)",cooling:"EvenTemp System",filter:"PurePour Water Filter",ice:"In-door ice maker",certification:"NSF Certified"},
+    features:["EvenTemp Cooling System","PurePour Water Filter (99% contaminant reduction)","External water & ice dispenser","3 adjustable glass shelves","2 adjustable gallon-sized door bins","Fresh Storage Crispers","No-Frost operation","LED lighting"],
+    images:[
+      "https://cdn.shopify.com/s/files/1/0740/2287/9488/files/FRSS2623AS_p110716-1.jpg?v=1741254247",
+      "https://cdn.shopify.com/s/files/1/0740/2287/9488/files/FRSS2623AS_p110716_47943.jpg?v=1741254247",
+      "https://cdn.shopify.com/s/files/1/0740/2287/9488/files/FRSS2623AS_p110716_47944.jpg?v=1741254248",
+      "https://cdn.shopify.com/s/files/1/0740/2287/9488/files/FRSS2623AS_p110716_47945.jpg?v=1741254247",
+      "https://cdn.shopify.com/s/files/1/0740/2287/9488/files/FRSS2623AS_p110716_47946.jpg?v=1741254247",
+      "https://cdn.shopify.com/s/files/1/0740/2287/9488/files/FRSS2623AS_p110716_47947.jpg?v=1741254247",
+      "https://cdn.shopify.com/s/files/1/0740/2287/9488/files/FRSS2623AS_p110716_47948.jpg?v=1741254247",
+      "https://cdn.shopify.com/s/files/1/0740/2287/9488/files/FRSS2623AS_p110716_47949.jpg?v=1741254248"
+    ]
+  },
+  {
+    model:"FFUE2024AW", brand:"Frigidaire",
+    fullName:"Frigidaire 20.0 cu. ft. Garage Ready Frost-Free Upright Freezer",
+    type:"Upright Freezer", price:5880, qty:1,
+    specs:{capacity:"20.0 cu ft",dimensions:'71.75" H x 32.63" W x 24.25" D',color:"White",energy:"ENERGY STAR Most Efficient (424 kWh/yr)",compressor:"Variable speed",defrost:"Frost-free auto",garageReady:"0-110°F ambient",door:"Reversible swing"},
+    features:["EvenTemp variable speed compressor","Garage-ready (0-110°F)","Frost-free auto defrost","Freeze Boost rapid freezing","4 adjustable glass shelves","5 fixed door bins + 1 basket","LED interior lighting","Power outage: frozen 2 days"],
+    images:[
+      "https://cdn.shopify.com/s/files/1/0740/2287/9488/files/FFUE2024AW_p104460.webp?v=1760133130",
+      "https://cdn.shopify.com/s/files/1/0740/2287/9488/files/FFUE2024AW_p104460_5916.webp?v=1760133130",
+      "https://cdn.shopify.com/s/files/1/0740/2287/9488/files/FFUE2024AW_p104460_5917.webp?v=1760133130",
+      "https://cdn.shopify.com/s/files/1/0740/2287/9488/files/FFUE2024AW_p104460_5918.webp?v=1760133130",
+      "https://cdn.shopify.com/s/files/1/0740/2287/9488/files/FFUE2024AW_p104460_5919.webp?v=1760133130",
+      "https://cdn.shopify.com/s/files/1/0740/2287/9488/files/FFUE2024AW_p104460_5920.webp?v=1760133130",
+      "https://cdn.shopify.com/s/files/1/0740/2287/9488/files/FFUE2024AW_p104460_5921.webp?v=1760133130",
+      "https://cdn.shopify.com/s/files/1/0740/2287/9488/files/FFUE2024AW_p104460_5922.webp?v=1760133130"
+    ]
+  },
+  {
+    model:"CFU21N6AWE", brand:"Hisense",
+    fullName:"Hisense 21.2 cu. ft. Garage Ready Convertible Upright Freezer/Refrigerator",
+    type:"Convertible Upright Freezer", price:5534, qty:1,
+    specs:{capacity:"21.2 cu ft",dimensions:'76.3" H x 32.7" W x 28.9" D',color:"White",energy:"ENERGY STAR Certified",defrost:"No Frost technology",garageReady:"0-110°F ambient",convertible:"Freezer/Fridge one-click",shelves:"4 shelves, 2 drawers, 5 bins"},
+    features:["Convertible freezer/refrigerator mode","Garage-ready (0-110°F)","No Frost technology","Fast Freeze function","5 in-door bins + 4 shelves","LED interior lighting","Door-ajar & temp rise alarm","Lock and key"],
+    images:[
+      "https://www.appliancestorediscount.com/cdn/shop/files/imageService_9f9a289f-fb0e-4592-8d25-d476d00d4aac_1024x1024.webp?v=1718408353",
+      "https://www.appliancestorediscount.com/cdn/shop/files/IMG_4185_1024x1024.jpg?v=1718408365",
+      "https://www.appliancestorediscount.com/cdn/shop/files/IMG_4189_1024x1024.jpg?v=1718408365",
+      "https://cdn.shopify.com/s/files/1/0642/4258/1712/files/imageDisplay_443fea83-ce1f-42d7-b97e-2286a4076529.jpg?v=1758331412"
+    ]
+  },
+  {
+    model:"LRTLS2403S", brand:"LG",
+    fullName:"LG 24 cu. ft. Top Freezer Refrigerator",
+    type:"Top-Freezer Refrigerator", price:5534, qty:1,
+    specs:{capacity:"23.8 cu ft",dimensions:'69" H x 33" W x 34" D',color:"PrintProof Stainless Steel",energy:"ENERGY STAR Certified",cooling:"Multi-Air Flow",dispenser:"Internal water dispenser",garageReady:"0-110°F ambient",shelves:"Spill Protector tempered glass"},
+    features:["Internal water dispenser","Multi-Air Flow technology","Spill Protector tempered glass shelves","Humidity-controlled crispers","Garage Ready (0-110°F)","Ice maker ready","LED lighting","Digital temperature sensors"],
+    images:[
+      "https://images.appliancepalace.com/products/lg/lrtls2403s/main/img-full.webp",
+      "https://images.appliancepalace.com/products/lg/lrtls2403s/main/img-initial.jpg",
+      "https://images.appliancepalace.com/products/lg/lrtls2403s/secondary/1/img-full.webp",
+      "https://images.appliancepalace.com/products/lg/lrtls2403s/secondary/2/img-full.webp",
+      "https://images.appliancepalace.com/products/lg/lrtls2403s/secondary/3/img-full.webp",
+      "https://images.appliancepalace.com/products/lg/lrtls2403s/secondary/4/img-full.webp"
+    ]
+  },
+  {
+    model:"RT70F18LASR", brand:"Samsung",
+    fullName:"Samsung 18 cu. ft. Top Freezer Refrigerator with Ice Maker",
+    type:"Top-Freezer Refrigerator", price:4842, qty:1,
+    specs:{capacity:"18 cu ft",dimensions:'66.88" H x 27.63" W x 31.88" D',color:"Stainless Steel",energy:"ENERGY STAR Certified",cooling:"All-Around Cooling",ice:"Built-in ice maker (3.3 lbs/day)",compressor:"AI Inverter",garageReady:"38-110°F ambient"},
+    features:["Built-in ice maker","All-Around Cooling","AI Inverter Compressor","Garage Ready (38-110°F)","Reversible door hinge","Gallon door bins","LED lighting","Sabbath Mode"],
+    images:[
+      "https://images.samsung.com/is/image/samsung/p6pim/us/rt70f18lasraa/gallery/us-top-freezer-rt70f18lasraa----cu--ft--top-freezer-refrigerator-with-ice-maker-in-stainless-steel-silver-549708113",
+      "https://www.parkaveappliance.com/cdn/shop/files/froanzkkxbvr.jpg?v=1749409344",
+      "https://www.parkaveappliance.com/cdn/shop/files/frkdymipjhox_6fab43c3-2eff-477b-8baa-9ea3b087403a.jpg?v=1749409344",
+      "https://www.parkaveappliance.com/cdn/shop/files/frhjjomeisqa.jpg?v=1749409344",
+      "https://www.parkaveappliance.com/cdn/shop/files/frsbrmfrusps.jpg?v=1749409344",
+      "https://images.appliancepalace.com/products/samsung/rt70f18lasr/main/img-full.webp"
+    ]
+  },
+  {
+    model:"RZ11M7074SA", brand:"Samsung",
+    fullName:"Samsung 11.4 cu. ft. Convertible Upright Freezer/Refrigerator with Drawers",
+    type:"Convertible Upright Freezer", price:4497, qty:1,
+    specs:{capacity:"11.4 cu ft",dimensions:'73" H x 23.38" W x 27.38" D',color:"Stainless Look",energy:"ENERGY STAR 2020 Emerging Tech Award",cooling:"All-Around Cooling",compressor:"Digital Inverter (10-yr warranty)",convertible:"Freezer/Fridge one-click",door:"Reversible"},
+    features:["Freezer/refrigerator convertible","3 shelves + 4 pull-out drawers","All-Around Cooling","Power Freeze (50 hours max)","Reversible door","Child lock","Door alarm","LED lighting"],
+    images:[
+      "https://images.samsung.com/is/image/samsung/p6pim/us/rz11m7074sa-aa/gallery/us-refrigerator-rz11m7074sa-rz11m7074sa-aa-551270660",
+      "https://images.samsung.com/is/image/samsung/p6pim/us/rz11m7074sa-aa/gallery/us-refrigerator-rz11m7074sa-rz11m7074sa-aa-551270665",
+      "https://images.appliancepalace.com/products/samsung/rz11m7074sa/main/img-full.webp",
+      "https://images.appliancepalace.com/products/samsung/rz11m7074sa/secondary/1/img-full.webp",
+      "https://images.appliancepalace.com/products/samsung/rz11m7074sa/secondary/2/img-full.webp",
+      "https://images.appliancepalace.com/products/samsung/rz11m7074sa/secondary/3/img-full.webp"
+    ]
+  },
+  {
+    model:"MC17T8000CS", brand:"Samsung",
+    fullName:"Samsung 1.7 cu. ft. Smart Over-the-Range Convection Microwave with Slim Fry",
+    type:"Over-the-Range Microwave", price:4358, qty:1,
+    specs:{capacity:"1.7 cu ft",dimensions:'16.94" H x 29.88" W x 16.63" D',color:"Stainless Steel",power:"950W cooking",ventilation:"3-speed 300 CFM",energy:"ENERGY STAR Certified",connectivity:"Wi-Fi / SmartThings",voice:"Bixby, Alexa, Google"},
+    features:["950W cooking power","Convection + Slim Fry technology","300 CFM ventilation","Wi-Fi / SmartThings app","Voice control (Bixby, Alexa, Google)","Steam Clean interior","Full glass-touch LED display","Auto Cook / Auto Defrost"],
+    images:[
+      "https://images.samsung.com/is/image/samsung/p6pim/us/mc17t8000cs-aa/gallery/us-me8000t-mc17t8000cs-aa-550675909",
+      "https://images.samsung.com/is/image/samsung/p6pim/us/mc17t8000cs-aa/gallery/us-me8000t-mc17t8000cs-aa-550421361",
+      "https://images.appliancepalace.com/products/samsung/mc17t8000cs/main/img-full.webp",
+      "https://images.appliancepalace.com/products/samsung/mc17t8000cs/secondary/1/img-full.webp",
+      "https://images.appliancepalace.com/products/samsung/mc17t8000cs/secondary/2/img-full.webp",
+      "https://images.appliancepalace.com/products/samsung/mc17t8000cs/secondary/3/img-full.webp"
+    ]
+  },
+  {
+    model:"CFU14N6AWE", brand:"Hisense",
+    fullName:"Hisense 13.6 cu. ft. Garage Ready Convertible Upright Freezer",
+    type:"Convertible Upright Freezer", price:3113, qty:2,
+    specs:{capacity:"13.6 cu ft",dimensions:'72.4" H x 29.5" W x 29.1" D',color:"White",energy:"ENERGY STAR Certified",defrost:"No Frost technology",garageReady:"0-110°F ambient",convertible:"Freezer/Fridge one-click",refrigerant:"R600a"},
+    features:["Freezer/refrigerator convertible","No Frost technology","Garage Ready (0-110°F)","Super Freeze function","5 shelves + door bins","LED lighting","Lock and key","Touch control panel with alarm"],
+    images:[
+      "https://www.appliancestorediscount.com/cdn/shop/files/imageService_9f9a289f-fb0e-4592-8d25-d476d00d4aac_1024x1024.webp?v=1718408353",
+      "https://www.appliancestorediscount.com/cdn/shop/files/IMG_4191_1024x1024.jpg?v=1718409633",
+      "https://www.appliancestorediscount.com/cdn/shop/files/IMG_4190_1024x1024.jpg?v=1718409634",
+      "https://www.appliancestorediscount.com/cdn/shop/files/IMG_4192_1024x1024.jpg?v=1718409634"
+    ]
+  },
+  {
+    model:"ME21DG6300SR", brand:"Samsung",
+    fullName:"Samsung 2.1 cu. ft. Bespoke Smart Over-the-Range Microwave",
+    type:"Over-the-Range Microwave", price:3113, qty:1,
+    specs:{capacity:"2.1 cu ft",dimensions:'17.06" H x 29.87" W x 16.5" D',color:"Stainless Steel",power:"1000W cooking",ventilation:"4-speed 400 CFM",interior:"Ceramic enamel",connectivity:"Wi-Fi / SmartThings",cooking:"Sensor cooking"},
+    features:["1000W cooking power","400 CFM 4-speed ventilation","Sensor cooking","Ceramic enamel interior","Auto-dimming glass touch controls","Wi-Fi / SmartThings app","Auto Connectivity with Samsung ranges","Bespoke design line"],
+    images:[
+      "https://images.samsung.com/is/image/samsung/p6pim/us/me21dg6300sraa/gallery/us-me7500d-me21dg6300srac-me21dg6300sraa-549555597",
+      "https://images.samsung.com/is/image/samsung/p6pim/us/me21dg6300sraa/gallery/us-me7500d-me21dg6300srac-me21dg6300sraa-549555598",
+      "https://images.appliancepalace.com/products/samsung/me21dg6300sr/main/img-full.webp",
+      "https://images.appliancepalace.com/products/samsung/me21dg6300sr/secondary/1/img-full.webp",
+      "https://images.appliancepalace.com/products/samsung/me21dg6300sr/secondary/2/img-full.webp",
+      "https://www.parkaveappliance.com/cdn/shop/files/frpjttugonca_grande.jpg?v=1749388374"
+    ]
+  },
+  {
+    model:"HFU101N1AVE", brand:"Hisense",
+    fullName:"Hisense 10.2 cu. ft. Garage Ready Convertible Upright Freezer",
+    type:"Convertible Upright Freezer", price:2975, qty:2,
+    specs:{capacity:"10.2 cu ft",dimensions:'67.7" H x 21.7" W x 24.9" D',color:"Silver",energy:"ENERGY STAR Certified",defrost:"No Frost technology",garageReady:"0-110°F ambient",door:"Reversible with Seal Break Handle",noise:"42 dB"},
+    features:["Freezer/refrigerator convertible","No Frost technology","Garage Ready (0-110°F)","Seal Break Handle","Reversible door","LED lighting","Door alarm","Electronic temperature control"],
+    images:[
+      "https://assets.hisense-canada.com/assets/GalleryImages/Product/634/5b1d61f6d1/front__ScaleMaxHeightWzc1MF0.jpg",
+      "https://assets.hisense-canada.com/assets/GalleryImages/Product/634/5f5bfa95a8/display__ScaleMaxHeightWzc1MF0.jpg",
+      "https://assets.hisense-canada.com/assets/GalleryImages/Product/634/5a7a8dcbdc/handle__ScaleMaxHeightWzc1MF0.jpg",
+      "https://assets.hisense-canada.com/assets/GalleryImages/Product/634/6965b905e0/LED__ScaleMaxHeightWzc1MF0.jpg",
+      "https://assets.hisense-canada.com/assets/GalleryImages/Product/634/ae4c122c56/open-door-1__ScaleMaxHeightWzc1MF0.jpg",
+      "https://assets.hisense-canada.com/assets/GalleryImages/Product/634/260c0de07f/open-door-2__ScaleMaxHeightWzc1MF0.jpg",
+      "https://assets.hisense-canada.com/assets/GalleryImages/Product/634/6d7d14a21d/open-door-3__ScaleMaxHeightWzc1MF0.jpg",
+      "https://assets.hisense-canada.com/assets/GalleryImages/Product/634/377689f704/open-door-4__ScaleMaxHeightWzc1MF0.jpg",
+      "https://savewithstu.com/cdn/shop/files/4000353948-847__1.jpg?v=1774113727"
+    ]
+  },
+  {
+    model:"LRONC0605V", brand:"LG",
+    fullName:"LG 6 cu. ft. Single Door Compact Refrigerator",
+    type:"Compact Refrigerator", price:2698, qty:2,
+    specs:{capacity:"5.79 cu ft",dimensions:'44.62" H x 20.62" W x 21.87" D',color:"Platinum Silver",energy:"ENERGY STAR Certified",compressor:"Inverter",shelves:"2 tempered glass",cooling:"Direct cooling",freezer:"0.92 cu ft compartment"},
+    features:["Inverter compressor","2 tempered glass shelves","Large produce bin","LED rear-mounted panels","Curved pocket handle","6 adjustable shelves total","Door baskets for easy access","Compact design for small spaces"],
+    images:[
+      "https://cdn.shopify.com/s/files/1/0939/0057/0920/files/LRONC0605V_p121668.jpg?v=1749802025",
+      "https://cdn.shopify.com/s/files/1/0939/0057/0920/files/LRONC0605V_p121668_38882.jpg?v=1749802025",
+      "https://cdn.shopify.com/s/files/1/0939/0057/0920/files/LRONC0605V_p121668_38883.jpg?v=1749802025",
+      "https://cdn.shopify.com/s/files/1/0939/0057/0920/files/LRONC0605V_p121668_46934-1.jpg?v=1749802025",
+      "https://cdn.shopify.com/s/files/1/0939/0057/0920/files/LRONC0605V_p121668_38884.jpg?v=1749802025",
+      "https://cdn.shopify.com/s/files/1/0939/0057/0920/files/LRONC0605V_p121668_38885.jpg?v=1749802025",
+      "https://images.appliancepalace.com/products/lg/lronc0605v/main/img-full.webp"
+    ]
+  }
+];
 
-    function formatPrice(p) {
-      return 'GHS ' + p.toLocaleString();
-    }
+function formatPrice(p) { return 'GHS ' + p.toLocaleString(); }
 
-    function renderCards(filtered) {
-      const grid = document.getElementById('product-grid');
-      grid.innerHTML = '';
-      filtered.forEach(p => {
-        const imgHTML = p.images.length > 0
-          ? p.images.slice(0, 3).map(url =>
-              `<img src="${url}" alt="${p.model}" onerror="this.parentElement.replaceChild(Object.assign(document.createElement('div'),{className:'img-placeholder',textContent:'Image unavailable'}),this)">`
-            ).join('')
-          : `<div class="img-placeholder" style="width:100%">No image available<br>${p.brand} ${p.model}</div>`;
+function renderCards(filtered) {
+  const grid = document.getElementById('product-grid');
+  grid.innerHTML = '';
+  filtered.forEach((p, idx) => {
+    const imgs = p.images.slice(0,3);
+    const imgHTML = imgs.length > 0
+      ? imgs.map(u => `<img src="${u}" alt="${p.model}" loading="lazy" onerror="this.style.display='none'">`).join('')
+      : `<div class="img-placeholder">No image<br>${p.brand} ${p.model}</div>`;
+    const card = document.createElement('div');
+    card.className = 'card';
+    card.dataset.brand = p.brand;
+    card.dataset.type = p.type;
+    card.onclick = () => openDetail(p);
+    card.innerHTML = `
+      <div class="card-header">
+        <div><span class="brand-badge">${p.brand}</span>${p.qty>1?`<span class="qty-badge">x${p.qty}</span>`:''}</div>
+        <div class="price">${formatPrice(p.price)}</div>
+      </div>
+      <div class="card-images">${imgHTML}</div>
+      <div class="card-body">
+        <h3>${p.fullName}</h3>
+        <span class="type-badge">${p.type}</span>
+        <div class="specs-mini">
+          <div><strong>Model</strong>${p.model}</div>
+          <div><strong>Capacity</strong>${p.specs.capacity}</div>
+        </div>
+        <span class="view-detail">View Details &rarr;</span>
+      </div>`;
+    grid.appendChild(card);
+  });
+}
 
-        const card = document.createElement('div');
-        card.className = 'card';
-        card.dataset.brand = p.brand;
-        card.dataset.type = p.type;
-        card.innerHTML = `
-          <div class="card-header">
-            <div>
-              <span class="brand-badge">${p.brand}</span>
-              ${p.qty > 1 ? `<span class="qty-badge">x${p.qty}</span>` : ''}
-            </div>
-            <div class="price">${formatPrice(p.price)}</div>
-          </div>
-          <div class="card-images">${imgHTML}</div>
-          <div class="card-body">
-            <h3>${p.fullName}</h3>
-            <span class="type-badge">${p.type}</span>
-            <div class="specs-grid">
-              <div class="spec-item"><strong>Model</strong>${p.model}</div>
-              <div class="spec-item"><strong>Capacity</strong>${p.specs.capacity}</div>
-              <div class="spec-item"><strong>Dimensions</strong>${p.specs.dimensions}</div>
-              <div class="spec-item"><strong>Color</strong>${p.specs.color}</div>
-            </div>
-            <details class="features">
-              <summary>Key Features (${p.features.length})</summary>
-              <ul>${p.features.map(f => `<li>${f}</li>`).join('')}</ul>
-            </details>
-          </div>
-        `;
-        grid.appendChild(card);
-      });
-    }
+function openDetail(p) {
+  const overlay = document.getElementById('detail-overlay');
+  const page = document.getElementById('detail-page');
+  const specRows = Object.entries(p.specs).map(([k,v]) =>
+    `<div class="spec-row"><span class="label">${k.replace(/([A-Z])/g,' $1').replace(/^./,s=>s.toUpperCase())}</span><span class="value">${v}</span></div>`
+  ).join('');
+  const featuresList = p.features.map(f => `<li>${f}</li>`).join('');
+  const thumbs = p.images.map((u,i) =>
+    `<img src="${u}" alt="View ${i+1}" loading="lazy" class="${i===0?'active':''}" onclick="switchImage(this,'${u.replace(/'/g,"\\'")}')" onerror="this.style.display='none'">`
+  ).join('');
 
-    function filterCards(filter) {
-      document.querySelectorAll('.filters button').forEach(b => b.classList.remove('active'));
-      event.target.classList.add('active');
-      if (filter === 'all') {
-        renderCards(products);
-      } else {
-        const filtered = products.filter(p =>
-          p.brand === filter ||
-          p.type.toLowerCase().includes(filter.toLowerCase())
-        );
-        renderCards(filtered);
-      }
-    }
+  page.innerHTML = `
+    <div class="detail-top" style="position:relative">
+      <div>
+        <span class="brand-badge" style="margin-right:8px">${p.brand}</span>
+        <span class="type-badge" style="background:rgba(255,255,255,0.15);color:white">${p.type}</span>
+        ${p.qty>1?`<span class="qty-badge">x${p.qty} units</span>`:''}
+      </div>
+      <div class="detail-price">${formatPrice(p.price)}</div>
+      <button class="close-btn" onclick="closeDetail()">&#10005;</button>
+    </div>
+    <div class="detail-gallery">
+      <img class="gallery-main" id="gallery-main" src="${p.images[0]||''}" alt="${p.fullName}" onerror="this.style.display='none'">
+      <div class="gallery-thumbs">${thumbs}</div>
+    </div>
+    <div style="padding:16px 28px 0"><h2 style="font-size:1.2rem;color:#1a1a2e">${p.fullName}</h2><p style="color:#666;font-size:0.85rem;margin-top:4px">Model: ${p.model}</p></div>
+    <div class="detail-content">
+      <div class="detail-specs"><h3>Specifications</h3>${specRows}</div>
+      <div class="detail-features"><h3>Key Features</h3><ul>${featuresList}</ul></div>
+    </div>
+    <div class="detail-badges">
+      ${Object.entries(p.specs).filter(([k,v])=>v.toString().includes('ENERGY STAR')||v.toString().includes('ADA')||v.toString().includes('Wi-Fi')).map(([k,v])=>`<span>${v}</span>`).join('')}
+    </div>`;
+  overlay.classList.add('active');
+  document.body.style.overflow = 'hidden';
+}
 
-    renderCards(products);
-    </script>
+function switchImage(thumb, url) {
+  document.getElementById('gallery-main').src = url;
+  document.querySelectorAll('.gallery-thumbs img').forEach(t => t.classList.remove('active'));
+  thumb.classList.add('active');
+}
+
+function closeDetail() {
+  document.getElementById('detail-overlay').classList.remove('active');
+  document.body.style.overflow = '';
+}
+
+document.addEventListener('keydown', e => { if(e.key==='Escape') closeDetail(); });
+
+function filterCards(filter) {
+  document.querySelectorAll('.filters button').forEach(b => b.classList.remove('active'));
+  event.target.classList.add('active');
+  if (filter === 'all') { renderCards(products); return; }
+  renderCards(products.filter(p => p.brand===filter || p.type.toLowerCase().includes(filter.toLowerCase())));
+}
+
+renderCards(products);
+</script>
 </body>
 </html>
