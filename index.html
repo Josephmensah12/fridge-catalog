@@ -46,6 +46,16 @@
         .specs-mini { display:grid; grid-template-columns:1fr 1fr; gap:4px; font-size:0.75rem; color:#555; }
         .specs-mini strong { display:block; font-size:0.65rem; text-transform:uppercase; letter-spacing:0.4px; color:#1a1a2e; }
         .view-detail { display:block; margin-top:10px; text-align:center; color:#e94560; font-size:0.8rem; font-weight:600; }
+        .card.sold { opacity:0.7; }
+        .card.sold .card-images { position:relative; }
+        .card.sold .card-images::after {
+            content:"SOLD"; position:absolute; top:50%; left:50%; transform:translate(-50%,-50%) rotate(-20deg);
+            font-size:3rem; font-weight:900; color:rgba(233,69,96,0.35); letter-spacing:6px;
+            pointer-events:none; z-index:5;
+        }
+        .sold-badge { display:inline-block; background:#e94560; color:white; padding:2px 8px; border-radius:6px; font-size:0.65rem; font-weight:700; margin-left:6px; text-transform:uppercase; }
+        .sold-info { font-size:0.7rem; color:#e94560; margin-top:4px; font-weight:500; }
+        .detail-sold-banner { background:#e94560; color:white; text-align:center; padding:10px; font-weight:600; font-size:0.9rem; }
 
         /* Detail Page */
         .detail-overlay {
@@ -119,6 +129,8 @@
             <button onclick="filterCards('Freezer')">Freezers</button>
             <button onclick="filterCards('Range')">Ranges</button>
             <button onclick="filterCards('Microwave')">Microwaves</button>
+            <button onclick="filterCards('sold')" style="border-color:#e94560;color:#e94560">Sold</button>
+            <button onclick="filterCards('available')" style="border-color:#4ecca3;color:#4ecca3">Available</button>
         </div>
     </header>
     <div class="container">
@@ -133,7 +145,7 @@ const products = [
   {
     model:"RF90F23AEW", brand:"Samsung",
     fullName:"Samsung Bespoke 23 cu. ft. Counter Depth 4-Door French Door Refrigerator with AI Family Hub+",
-    type:"4-Door French Door Refrigerator", price:28000, qty:1,
+    type:"4-Door French Door Refrigerator", price:28000, qty:1, sold:1, soldTo:"BIZZ HUB IBRAHIM", soldInvoice:"SB-005055", soldDate:"March 4, 2026",
     specs:{capacity:"23 cu ft",dimensions:'70.25" H x 35.75" W x 28.75" D',color:"White Glass",weight:"310 lbs",energy:"ENERGY STAR Certified",compressor:"AI Inverter (10-Year Warranty)",cooling:"Triple Cooling",ice:"Dual Auto Ice Maker"},
     features:["AI Family Hub+ with 32\" touchscreen","AI Vision Inside camera-based food recognition","Beverage Center with AutoFill Water Pitcher","FlexZone Drawer with 5 temperature settings","Auto Open Door sensor","AI Energy Mode - up to 10% savings","Bespoke customizable door panels","SmartThings Wi-Fi connectivity"],
     images:[
@@ -150,7 +162,7 @@ const products = [
   {
     model:"LTGL6937F", brand:"LG",
     fullName:"LG 6.9 cu. ft. Smart InstaView Double Oven Slide-In Gas Range with ProBake Convection & Air Fry",
-    type:"Slide-In Gas Range", price:25000, qty:2,
+    type:"Slide-In Gas Range", price:25000, qty:2, sold:1, soldTo:"BIZZ HUB IBRAHIM", soldInvoice:"SB-005055", soldDate:"March 4, 2026",
     specs:{capacity:"6.9 cu ft total",dimensions:'36" H x 29.88" W x 29.27" D',color:"PrintProof Stainless Steel",burners:"5 sealed (22,000 BTU max)",oven:"Double oven (upper + lower)",energy:"ENERGY STAR Certified",cleaning:"EasyClean + Self-Clean",connectivity:"Wi-Fi / LG ThinQ"},
     features:["UltraHeat 22,000 BTU dual-power burner","Center oval burner for griddle","ProBake Convection for even baking","Air Fry & Air Sous Vide","InstaView knock-twice window","SmoothTouch glass controls","PrintProof fingerprint-resistant finish","Google Assistant & Alexa compatible"],
     images:[
@@ -164,7 +176,7 @@ const products = [
   {
     model:"RF23BB860012", brand:"Samsung",
     fullName:"Samsung Bespoke 4-Door French Door Smart Refrigerator (23 cu. ft.) with Beverage Center",
-    type:"4-Door French Door Refrigerator", price:25000, qty:1,
+    type:"4-Door French Door Refrigerator", price:25000, qty:1, sold:1, soldTo:"BIZZ HUB IBRAHIM", soldInvoice:"SB-005055", soldDate:"March 4, 2026",
     specs:{capacity:"22.8 cu ft",dimensions:'70" H x 35.75" W x 28.75" D',color:"White Glass",weight:"295 lbs",energy:"ENERGY STAR Certified",cooling:"Triple Cooling Plus",ice:"Dual Ice Maker + Ice Bites",connectivity:"SmartThings Wi-Fi"},
     features:["Beverage Center with AutoFill Water Pitcher","Dual Ice Maker (cubed + Ice Bites)","FlexZone Drawer with 5 temp settings","Bespoke customizable door panels","Flat panel door with recessed handles","SmartThings app - door alerts, filter notifications","Counter-depth for built-in look","ADA Compliant"],
     images:[
@@ -179,7 +191,7 @@ const products = [
   {
     model:"RF90F29AECR", brand:"Samsung",
     fullName:"Samsung Bespoke 29 cu. ft. 4-Door French Door Refrigerator with AI Family Hub+",
-    type:"4-Door French Door Refrigerator", price:25000, qty:1,
+    type:"4-Door French Door Refrigerator", price:25000, qty:1, sold:1, soldTo:"BIZZ HUB IBRAHIM", soldInvoice:"SB-005055", soldDate:"March 4, 2026",
     specs:{capacity:"29 cu ft",dimensions:'70.25" H x 35.75" W x 34.25" D',color:"Charcoal Glass / Stainless Steel",energy:"ENERGY STAR Certified",compressor:"AI Inverter (10-Year Warranty)",cooling:"Triple Cooling",ice:"Dual Auto Ice Maker",connectivity:"SmartThings Wi-Fi"},
     features:["AI Family Hub+ with 32\" touchscreen","AI Vision Inside camera recognition","Beverage Center with AutoFill Pitcher","FlexZone Drawer with 5 settings","AI Energy Mode for savings","Bespoke customizable panels","Standard depth design","Auto Open Door"],
     images:[
@@ -245,7 +257,7 @@ const products = [
   {
     model:"RF29BB8600QL", brand:"Samsung",
     fullName:"Samsung Bespoke 29 cu. ft. 4-Door French Door Smart Refrigerator with Beverage Center",
-    type:"4-Door French Door Refrigerator", price:20000, qty:2,
+    type:"4-Door French Door Refrigerator", price:20000, qty:2, sold:1, soldTo:"BIZZ HUB IBRAHIM", soldInvoice:"SB-005055", soldDate:"March 4, 2026",
     specs:{capacity:"28.8 cu ft",dimensions:'35.75" W x 34.25" D x 70" H',color:"Stainless Steel (Bespoke)",energy:"ENERGY STAR Certified",cooling:"Twin Cooling Plus",ice:"Dual Ice Maker + Ice Bites",drawer:"FlexZone (5 settings)",connectivity:"SmartThings Wi-Fi"},
     features:["Beverage Center with AutoFill Pitcher","Dual Ice Maker (cubed + Ice Bites)","FlexZone Drawer (5 settings)","Twin Cooling Plus technology","Bespoke customizable panels","SmartThings app control","ADA Compliant","Flat panel recessed handles"],
     images:[
@@ -377,7 +389,7 @@ const products = [
   {
     model:"RF32CG5400SR", brand:"Samsung",
     fullName:"Samsung 31 Cu. Ft. Mega Capacity 3-Door French Door Refrigerator with Four Types of Ice",
-    type:"French Door Refrigerator", price:8993, qty:1,
+    type:"French Door Refrigerator", price:8993, qty:1, sold:1, soldTo:"BIZZ HUB IBRAHIM", soldInvoice:"SB-005055", soldDate:"March 4, 2026",
     specs:{capacity:"31 cu ft",dimensions:'70" H x 35.75" W x 36.25" D',color:"Stainless Steel",energy:"ENERGY STAR Certified",ice:"4 types (cubed, Ice Bites, curved, crushed)",cooling:"All-Around Cooling",connectivity:"SmartThings Wi-Fi",compliance:"ADA Compliant"},
     features:["Four types of ice","Dual Auto Ice Maker","All-Around Cooling multi-vent","Slide-In shelf for large items","SmartThings app control","AI Energy Mode","Star-K Certified","Digital Inverter Compressor"],
     images:[
@@ -441,7 +453,7 @@ const products = [
   {
     model:"RS27T5200SR", brand:"Samsung",
     fullName:"Samsung 27.4 cu. ft. Side-by-Side Refrigerator - Stainless Steel",
-    type:"Side-by-Side Refrigerator", price:6918, qty:2,
+    type:"Side-by-Side Refrigerator", price:6918, qty:2, sold:1, soldTo:"BIZZ HUB IBRAHIM", soldInvoice:"SB-005055", soldDate:"March 4, 2026",
     specs:{capacity:"27.4 cu ft",dimensions:'70.06" H x 35.88" W x 33.5" D',color:"Stainless Steel",energy:"ENERGY STAR Certified (728 kWh/yr)",cooling:"All-Around Cooling",ice:"In-Door Ice Maker",compressor:"Digital Inverter (10-yr warranty)",compliance:"ADA Compliant"},
     features:["In-Door Ice Maker","External water & ice dispenser","All-Around Cooling multi-vent","Fingerprint-resistant finish","4 tempered glass shelves","LED lighting","Digital Inverter Compressor","SmartThings compatible"],
     images:[
@@ -519,7 +531,7 @@ const products = [
   {
     model:"RT70F18LASR", brand:"Samsung",
     fullName:"Samsung 18 cu. ft. Top Freezer Refrigerator with Ice Maker",
-    type:"Top-Freezer Refrigerator", price:4842, qty:1,
+    type:"Top-Freezer Refrigerator", price:4842, qty:1, sold:1, soldTo:"BIZZ HUB IBRAHIM", soldInvoice:"SB-005055", soldDate:"March 4, 2026",
     specs:{capacity:"18 cu ft",dimensions:'66.88" H x 27.63" W x 31.88" D',color:"Stainless Steel",energy:"ENERGY STAR Certified",cooling:"All-Around Cooling",ice:"Built-in ice maker (3.3 lbs/day)",compressor:"AI Inverter",garageReady:"38-110°F ambient"},
     features:["Built-in ice maker","All-Around Cooling","AI Inverter Compressor","Garage Ready (38-110°F)","Reversible door hinge","Gallon door bins","LED lighting","Sabbath Mode"],
     images:[
@@ -549,7 +561,7 @@ const products = [
   {
     model:"MC17T8000CS", brand:"Samsung",
     fullName:"Samsung 1.7 cu. ft. Smart Over-the-Range Convection Microwave with Slim Fry",
-    type:"Over-the-Range Microwave", price:4358, qty:1,
+    type:"Over-the-Range Microwave", price:4358, qty:1, sold:1, soldTo:"BIZZ HUB IBRAHIM", soldInvoice:"SB-005055", soldDate:"March 4, 2026",
     specs:{capacity:"1.7 cu ft",dimensions:'16.94" H x 29.88" W x 16.63" D',color:"Stainless Steel",power:"950W cooking",ventilation:"3-speed 300 CFM",energy:"ENERGY STAR Certified",connectivity:"Wi-Fi / SmartThings",voice:"Bixby, Alexa, Google"},
     features:["950W cooking power","Convection + Slim Fry technology","300 CFM ventilation","Wi-Fi / SmartThings app","Voice control (Bixby, Alexa, Google)","Steam Clean interior","Full glass-touch LED display","Auto Cook / Auto Defrost"],
     images:[
@@ -577,7 +589,7 @@ const products = [
   {
     model:"ME21DG6300SR", brand:"Samsung",
     fullName:"Samsung 2.1 cu. ft. Bespoke Smart Over-the-Range Microwave",
-    type:"Over-the-Range Microwave", price:3113, qty:1,
+    type:"Over-the-Range Microwave", price:3113, qty:1, sold:1, soldTo:"BIZZ HUB IBRAHIM", soldInvoice:"SB-005055", soldDate:"March 4, 2026",
     specs:{capacity:"2.1 cu ft",dimensions:'17.06" H x 29.87" W x 16.5" D',color:"Stainless Steel",power:"1000W cooking",ventilation:"4-speed 400 CFM",interior:"Ceramic enamel",connectivity:"Wi-Fi / SmartThings",cooking:"Sensor cooking"},
     features:["1000W cooking power","400 CFM 4-speed ventilation","Sensor cooking","Ceramic enamel interior","Auto-dimming glass touch controls","Wi-Fi / SmartThings app","Auto Connectivity with Samsung ranges","Bespoke design line"],
     images:[
@@ -592,7 +604,7 @@ const products = [
   {
     model:"HFU101N1AVE", brand:"Hisense",
     fullName:"Hisense 10.2 cu. ft. Garage Ready Convertible Upright Freezer",
-    type:"Convertible Upright Freezer", price:2975, qty:2,
+    type:"Convertible Upright Freezer", price:2975, qty:2, sold:1, soldTo:"BIZZ HUB IBRAHIM", soldInvoice:"SB-005055", soldDate:"March 4, 2026",
     specs:{capacity:"10.2 cu ft",dimensions:'67.7" H x 21.7" W x 24.9" D',color:"Silver",energy:"ENERGY STAR Certified",defrost:"No Frost technology",garageReady:"0-110°F ambient",door:"Reversible with Seal Break Handle",noise:"42 dB"},
     features:["Freezer/refrigerator convertible","No Frost technology","Garage Ready (0-110°F)","Seal Break Handle","Reversible door","LED lighting","Door alarm","Electronic temperature control"],
     images:[
@@ -635,20 +647,27 @@ function renderCards(filtered) {
     const imgHTML = imgs.length > 0
       ? imgs.map(u => `<img src="${u}" alt="${p.model}" loading="lazy" onerror="this.style.display='none'">`).join('')
       : `<div class="img-placeholder">No image<br>${p.brand} ${p.model}</div>`;
+    const allSold = p.sold && p.sold >= p.qty;
+    const partiallySold = p.sold && p.sold < p.qty;
+    const avail = p.qty - (p.sold||0);
     const card = document.createElement('div');
-    card.className = 'card';
+    card.className = 'card' + (allSold ? ' sold' : '');
     card.dataset.brand = p.brand;
     card.dataset.type = p.type;
+    card.dataset.sold = p.sold ? 'yes' : 'no';
+    card.dataset.available = avail > 0 ? 'yes' : 'no';
     card.onclick = () => openDetail(p);
     card.innerHTML = `
       <div class="card-header">
-        <div><span class="brand-badge">${p.brand}</span>${p.qty>1?`<span class="qty-badge">x${p.qty}</span>`:''}</div>
+        <div><span class="brand-badge">${p.brand}</span>${p.qty>1?`<span class="qty-badge">x${p.qty}</span>`:''}${allSold?'<span class="sold-badge">Sold</span>':''}${partiallySold?`<span class="sold-badge">${p.sold} Sold</span>`:''}</div>
         <div class="price">${formatPrice(p.price)}</div>
       </div>
       <div class="card-images">${imgHTML}</div>
       <div class="card-body">
         <h3>${p.fullName}</h3>
         <span class="type-badge">${p.type}</span>
+        ${partiallySold?`<div class="sold-info">${p.sold} sold / ${avail} available</div>`:''}
+        ${allSold?`<div class="sold-info">Sold to ${p.soldTo} - Invoice ${p.soldInvoice}</div>`:''}
         <div class="specs-mini">
           <div><strong>Model</strong>${p.model}</div>
           <div><strong>Capacity</strong>${p.specs.capacity}</div>
@@ -670,7 +689,12 @@ function openDetail(p) {
     `<img src="${u}" alt="View ${i+1}" loading="lazy" class="${i===0?'active':''}" onclick="switchImage(this,'${u.replace(/'/g,"\\'")}')" onerror="this.style.display='none'">`
   ).join('');
 
+  const dAllSold = p.sold && p.sold >= p.qty;
+  const dPartSold = p.sold && p.sold < p.qty;
+  const dAvail = p.qty - (p.sold||0);
   page.innerHTML = `
+    ${dAllSold?`<div class="detail-sold-banner">SOLD - Invoice ${p.soldInvoice} to ${p.soldTo} (${p.soldDate})</div>`:''}
+    ${dPartSold?`<div class="detail-sold-banner" style="background:#ff9800">${p.sold} of ${p.qty} SOLD - Invoice ${p.soldInvoice} to ${p.soldTo} (${p.soldDate}) | ${dAvail} still available</div>`:''}
     <div class="detail-top" style="position:relative">
       <div>
         <span class="brand-badge" style="margin-right:8px">${p.brand}</span>
@@ -713,6 +737,8 @@ function filterCards(filter) {
   document.querySelectorAll('.filters button').forEach(b => b.classList.remove('active'));
   event.target.classList.add('active');
   if (filter === 'all') { renderCards(products); return; }
+  if (filter === 'sold') { renderCards(products.filter(p => p.sold > 0)); return; }
+  if (filter === 'available') { renderCards(products.filter(p => (p.qty-(p.sold||0)) > 0)); return; }
   renderCards(products.filter(p => p.brand===filter || p.type.toLowerCase().includes(filter.toLowerCase())));
 }
 
