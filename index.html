@@ -9,18 +9,20 @@
         body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background: #f0f2f5; color: #1a1a2e; }
         header {
             background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
-            color: white; padding: 30px 20px; text-align: center;
-            position: sticky; top: 0; z-index: 100; box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+            color: white; padding: 10px 20px;
+            position: sticky; top: 0; z-index: 100; box-shadow: 0 2px 12px rgba(0,0,0,0.3);
+            display: flex; align-items: center; gap: 16px; flex-wrap: wrap;
         }
-        header h1 { font-size: 2rem; letter-spacing: 1px; }
-        header p { margin-top: 6px; opacity: 0.8; font-size: 0.9rem; }
-        .filters { display: flex; justify-content: center; gap: 8px; margin-top: 14px; flex-wrap: wrap; }
+        .header-title { display:flex; align-items:center; gap:10px; white-space:nowrap; }
+        header h1 { font-size: 1.1rem; letter-spacing: 0.5px; }
+        header p { display:none; }
+        .filters { display: flex; gap: 6px; flex-wrap: wrap; flex:1; }
         .filters button {
-            padding: 6px 16px; border: 1px solid rgba(255,255,255,0.3); background: transparent;
-            color: white; border-radius: 20px; cursor: pointer; font-size: 0.8rem; transition: all 0.3s;
+            padding: 4px 12px; border: 1px solid rgba(255,255,255,0.25); background: transparent;
+            color: white; border-radius: 14px; cursor: pointer; font-size: 0.72rem; transition: all 0.2s;
         }
         .filters button:hover, .filters button.active { background: #e94560; border-color: #e94560; }
-        .container { max-width: 1400px; margin: 0 auto; padding: 24px 20px; }
+        .container { max-width: 1400px; margin: 0 auto; padding: 16px 20px; }
         .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(380px, 1fr)); gap: 20px; }
         .card {
             background: white; border-radius: 14px; overflow: hidden; cursor: pointer;
@@ -116,8 +118,7 @@
 </head>
 <body>
     <header>
-        <h1>Kitchen Appliance Catalog</h1>
-        <p>Complete inventory with specifications and pricing</p>
+        <div class="header-title"><h1>Kitchen Appliance Catalog</h1></div>
         <div class="filters">
             <button class="active" onclick="filterCards('all')">All</button>
             <button onclick="filterCards('Samsung')">Samsung</button>
