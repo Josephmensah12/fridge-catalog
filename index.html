@@ -20,7 +20,7 @@
         }
         .filters button:hover, .filters button.active { background: #e94560; border-color: #e94560; }
         .container { max-width: 1400px; margin: 0 auto; padding: 16px 20px; }
-        .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(380px, 1fr)); gap: 20px; }
+        .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(440px, 1fr)); gap: 22px; }
         .card {
             background: white; border-radius: 14px; overflow: hidden; cursor: pointer;
             box-shadow: 0 3px 12px rgba(0,0,0,0.08); transition: transform 0.3s, box-shadow 0.3s;
@@ -32,9 +32,9 @@
         }
         .brand-badge { background: #e94560; padding: 3px 10px; border-radius: 10px; font-size: 0.7rem; font-weight: 600; text-transform: uppercase; }
         .price { font-size: 1.3rem; font-weight: 700; color: #4ecca3; }
-        .card-images { display: flex; height: 200px; overflow: hidden; background: #fafafa; }
+        .card-images { display: flex; height: 300px; overflow: hidden; background: #fafafa; }
         .card-images img {
-            flex: 1; min-width: 0; object-fit: contain; padding: 8px; border-right: 1px solid #eee; background: white;
+            flex: 1; min-width: 0; object-fit: contain; padding: 10px; border-right: 1px solid #eee; background: white;
         }
         .card-images img:last-child { border-right: none; }
         .img-placeholder { flex:1; display:flex; align-items:center; justify-content:center; background:#f8f9fa; color:#aaa; font-size:0.8rem; text-align:center; padding:10px; }
@@ -83,14 +83,14 @@
         .close-btn:hover { background:rgba(255,255,255,0.3); }
         .detail-gallery { padding:24px; background:#fafafa; }
         .gallery-main {
-            width:100%; max-height:400px; object-fit:contain; border-radius:10px;
+            width:100%; max-height:560px; object-fit:contain; border-radius:10px;
             background:white; display:block; margin:0 auto; cursor:zoom-in;
         }
         .gallery-thumbs {
             display:flex; gap:8px; margin-top:12px; overflow-x:auto; padding-bottom:8px;
         }
         .gallery-thumbs img {
-            width:80px; height:80px; object-fit:contain; border-radius:8px; border:2px solid transparent;
+            width:100px; height:100px; object-fit:contain; border-radius:8px; border:2px solid transparent;
             cursor:pointer; background:white; flex-shrink:0; transition:border-color 0.2s;
         }
         .gallery-thumbs img:hover, .gallery-thumbs img.active { border-color:#e94560; }
@@ -129,7 +129,6 @@
             <button onclick="filterCards('Freezer')">Freezers</button>
             <button onclick="filterCards('Range')">Ranges</button>
             <button onclick="filterCards('Microwave')">Microwaves</button>
-            <button onclick="filterCards('sold')" style="border-color:#e94560;color:#e94560">Sold</button>
             <button onclick="filterCards('available')" style="border-color:#4ecca3;color:#4ecca3">Available</button>
             <button onclick="filterCards('ghana')" style="border-color:#4ecca3;color:#4ecca3">&#127468;&#127469; In Ghana</button>
         </div>
@@ -146,7 +145,7 @@ const products = [
   {
     model:"LTGL6937F", brand:"LG",
     fullName:"LG 6.9 cu. ft. Smart InstaView Double Oven Slide-In Gas Range with ProBake Convection & Air Fry",
-    type:"Slide-In Gas Range", price:25000, qty:2, sold:1, soldInvoice:"SB-005055", soldDate:"March 4, 2026",
+    type:"Slide-In Gas Range", price:25000, qty:1,
     specs:{capacity:"6.9 cu ft total",dimensions:'36" H x 29.88" W x 29.27" D',color:"PrintProof Stainless Steel",burners:"5 sealed (22,000 BTU max)",oven:"Double oven (upper + lower)",energy:"ENERGY STAR Certified",cleaning:"EasyClean + Self-Clean",connectivity:"Wi-Fi / LG ThinQ"},
     features:["UltraHeat 22,000 BTU dual-power burner","Center oval burner for griddle","ProBake Convection for even baking","Air Fry & Air Sous Vide","InstaView knock-twice window","SmoothTouch glass controls","PrintProof fingerprint-resistant finish","Google Assistant & Alexa compatible"],
     images:[
@@ -210,7 +209,7 @@ const products = [
   {
     model:"RF29BB8600QL", brand:"Samsung",
     fullName:"Samsung Bespoke 29 cu. ft. 4-Door French Door Smart Refrigerator with Beverage Center",
-    type:"4-Door French Door Refrigerator", price:20000, qty:2, sold:1, soldInvoice:"SB-005055", soldDate:"March 4, 2026",
+    type:"4-Door French Door Refrigerator", price:20000, qty:1,
     specs:{capacity:"28.8 cu ft",dimensions:'35.75" W x 34.25" D x 70" H',color:"Stainless Steel (Bespoke)",energy:"ENERGY STAR Certified",cooling:"Twin Cooling Plus",ice:"Dual Ice Maker + Ice Bites",drawer:"FlexZone (5 settings)",connectivity:"SmartThings Wi-Fi"},
     features:["Beverage Center with AutoFill Pitcher","Dual Ice Maker (cubed + Ice Bites)","FlexZone Drawer (5 settings)","Twin Cooling Plus technology","Bespoke customizable panels","SmartThings app control","ADA Compliant","Flat panel recessed handles"],
     images:[
@@ -255,7 +254,7 @@ const products = [
   {
     model:"LF30S8210S", brand:"LG",
     fullName:"LG 30 cu. ft. Smart Standard-Depth MAX 4-Door French Door Refrigerator with Full-Convert Drawer",
-    type:"4-Door French Door Refrigerator", price:13836, qty:2,
+    type:"4-Door French Door Refrigerator", price:13836, qty:1,
     specs:{capacity:"29.6 cu ft",dimensions:'35.75" W x 34.38" D x 70.25" H',color:"PrintProof Stainless Steel",energy:"ENERGY STAR Certified",drawer:"Full-Convert (5 settings)",dispenser:"Internal Water Dispenser",compressor:"Smart Inverter (BLDC)",connectivity:"Wi-Fi / LG ThinQ"},
     features:["Full-Convert Drawer (5 settings)","Internal Water Dispenser","Pocket Handle design","Slam-Resistant soft-close doors","Cool Guard technology","Linear Cooling","Fingerprint Resistant","Google Assistant & Alexa"],
     images:[
@@ -271,7 +270,7 @@ const products = [
   {
     model:"LF25Z6211S", brand:"LG",
     fullName:"LG 25 cu. ft. Counter-Depth MAX with Zero Clearance 3-Door French Door Refrigerator",
-    type:"French Door Refrigerator", price:13836, qty:3,
+    type:"French Door Refrigerator", price:13836, qty:2,
     specs:{capacity:"25.1 cu ft",dimensions:'35.75" W x 27.5" D x 70.25" H',color:"PrintProof Stainless Steel",energy:"ENERGY STAR Certified (632 kWh/yr)",hinge:"Zero Clearance Hinge System",ice:"Slim SpacePlus Ice System",compressor:"Smart Inverter (BLDC)",compliance:"ADA Compliant"},
     features:["Zero Clearance Hinge System","Counter-Depth MAX ultra-shallow (27.5\" deep)","45% thinner door for built-in look","Internal Water Dispenser","Slim SpacePlus Ice System","Glide N' Serve Drawer","6 adjustable door bins","Google Assistant & Alexa"],
     images:[
@@ -315,28 +314,10 @@ const products = [
     specs:{capacity:"23 cu ft",dimensions:'70" H x 35.88" W x 28.5" D',color:"Stainless Steel",energy:"ENERGY STAR Certified",cooling:"Twin Cooling Plus",ice:"Dual Ice Maker + Ice Bites",drawer:"FlexZone (fridge or freezer)",filter:"UV Deodorizing Filter"},
     features:["Beverage Center with AutoFill Pitcher","Dual Ice Maker (cubed + Ice Bites)","FlexZone drawer (fridge or freezer mode)","UV Deodorizing Filter","CleanGuard antimicrobial handles","Counter-depth flat-door design","Flex Crisper (2 temp settings)","SmartThings app"],
     images:[
-      "https://images.samsung.com/is/image/samsung/p6pim/us/rf23b7671sr-aa/gallery/us-4-door-flex-rf23b7671sr-aa-531811336",
-      "https://images.samsung.com/is/image/samsung/p6pim/us/rf23b7671sr-aa/gallery/us-4-door-flex-rf23b7671sr-aa-531811337",
       "https://bestremodelinghome.com/cdn/shop/files/FullSizeRender_f9b85a1f-d897-45dc-907e-adec88823ae3.jpg?v=1718113473",
       "https://bestremodelinghome.com/cdn/shop/files/FullSizeRender_fc8791ab-7e49-433b-a2f7-f99362c4fc5f.jpg?v=1718113473",
       "https://olaretaildeals.com/cdn/shop/products/6448502_sd_15828e77-e558-49bf-bbd2-62ed91fce40d_1024x1024.jpg?v=1679343490",
       "https://olaretaildeals.com/cdn/shop/products/IMG_3317_075db17b-cd35-49cb-bea7-082b6d1adbf0_1800x1800.jpg?v=1679344324"
-    ]
-  },
-  {
-    model:"LSIL6334XE", brand:"LG",
-    fullName:"LG 6.3 Cu. Ft. Smart Induction Slide-In Range with ProBake Convection and Air Fry",
-    type:"Slide-In Induction Range", price:11760, qty:1,
-    specs:{capacity:"6.3 cu ft oven",dimensions:'36.5" H x 29.88" W x 29.31" D',color:"PrintProof Stainless Steel",elements:"4 induction (up to 3900W)",energy:"ENERGY STAR Certified",cleaning:"EasyClean + Self-Clean",connectivity:"ThinQ Wi-Fi",compliance:"Sabbath Mode"},
-    features:["4 induction elements (up to 3900W UltraHeat)","ProBake Convection rear heating","Air Fry capability","WideView Window","EasyClean + Self-Clean modes","ThinQ Wi-Fi scan-to-cook","Flex Control Knobs","Storage drawer"],
-    images:[
-      "https://media.us.lg.com/transform/ecomm-PDPGallery-1100x730/256a7977-aa4a-46a7-b3b4-9e197fe5d4e3/Ranges_LSIL6334XE_gallery_05_new_2500x2500",
-      "https://www.lg.com/content/dam/channel/wcms/ca_en/images/ranges-ovens/lsil6334xe/gallery/DZ-01.jpg",
-      "https://www.lg.com/content/dam/channel/wcms/ca_en/images/ranges-ovens/lsil6334xe/gallery/DZ-02.jpg",
-      "https://www.lg.com/content/dam/channel/wcms/ca_en/images/ranges-ovens/lsil6334xe/gallery/DZ-03.jpg",
-      "https://www.lg.com/content/dam/channel/wcms/ca_en/images/ranges-ovens/lsil6334xe/gallery/DZ-04.jpg",
-      "https://www.lg.com/content/dam/channel/wcms/ca_en/images/ranges-ovens/lsil6334xe/gallery/DZ-05.jpg",
-      "https://www.lg.com/content/dam/channel/wcms/ca_en/images/ranges-ovens/lsil6334xe/gallery/DZ-06.jpg"
     ]
   },
   {
@@ -356,41 +337,9 @@ const products = [
     ]
   },
   {
-    model:"RS27T5200SG", brand:"Samsung",
-    fullName:"Samsung 27.4 cu. ft. Side-by-Side Refrigerator - Black Stainless Steel",
-    type:"Side-by-Side Refrigerator", price:7610, qty:1,
-    specs:{capacity:"27.4 cu ft",dimensions:'70.06" H x 35.88" W x 33.5" D',color:"Black Stainless Steel",energy:"ENERGY STAR Certified",cooling:"All-Around Cooling",ice:"In-Door Ice Maker",compressor:"Digital Inverter (10-yr warranty)",compliance:"ADA Compliant"},
-    features:["In-Door Ice Maker","External water & ice dispenser","All-Around Cooling","Fingerprint-resistant finish","4 tempered glass shelves","2 clear drawers","LED lighting","Digital Inverter Compressor"],
-    images:[
-      "https://images.samsung.com/is/image/samsung/p6pim/us/rs27t5200sg-aa/gallery/us-ref-sbs-rs5300-569370-rs27t5200sg-aa-549691709",
-      "https://images.samsung.com/is/image/samsung/p6pim/us/rs27t5200sg-aa/gallery/us-ref-sbs-rs5300-569370-rs27t5200sg-aa-549692122",
-      "https://images.samsung.com/is/image/samsung/p6pim/us/rs27t5200sg-aa/gallery/us-ref-sbs-rs5300-569370-rs27t5200sg-aa-549692180",
-      "https://images.samsung.com/is/image/samsung/p6pim/us/rs27t5200sg-aa/gallery/us-ref-sbs-rs5300-569370-rs27t5200sg-aa-549692187",
-      "https://images.samsung.com/is/image/samsung/p6pim/us/rs27t5200sg-aa/gallery/us-ref-sbs-rs5300-569370-rs27t5200sg-aa-549692191",
-      "https://images.samsung.com/is/image/samsung/p6pim/us/rs27t5200sg-aa/gallery/us-ref-sbs-rs5300-569370-rs27t5200sg-aa-549692203",
-      "https://samsungparts.com/cdn/shop/products/rs27t5200sg_01_black_retail5e3870ce54fd56.04540213_710a5.jpg?v=1698844263"
-    ]
-  },
-  {
-    model:"LREN6325XE", brand:"LG",
-    fullName:"LG 6.3 cu. ft. Smart ProBake Convection Electric Range with Air Fry & InstaView",
-    type:"Freestanding Electric Range", price:7264, qty:1,
-    specs:{capacity:"6.3 cu ft oven",dimensions:'46.5" H x 29.88" W x 26.75" D',color:"PrintProof Stainless Steel",elements:"5 radiant (100W-3,200W)",energy:"ENERGY STAR Certified",cleaning:"EasyClean 10-min cycle",connectivity:"Wi-Fi / LG ThinQ",compliance:"Sabbath Mode"},
-    features:["5 radiant heating elements","ProBake Convection system","Built-in Air Fry","InstaView knock-twice window","EasyClean 10-minute cycle","Edge-to-edge glass cooktop","Storage drawer","Google Assistant & Alexa"],
-    images:[
-      "https://cdn.shopify.com/s/files/1/0740/2287/9488/files/LREN6325XE_p172595.jpg?v=1756244837",
-      "https://cdn.shopify.com/s/files/1/0740/2287/9488/files/LREN6325XE_p172595_166246.jpg?v=1756244837",
-      "https://cdn.shopify.com/s/files/1/0740/2287/9488/files/LREN6325XE_p172595_166247.jpg?v=1756244837",
-      "https://cdn.shopify.com/s/files/1/0740/2287/9488/files/LREN6325XE_p172595_166248.jpg?v=1756244837",
-      "https://cdn.shopify.com/s/files/1/0740/2287/9488/files/LREN6325XE_p172595_166249.jpg?v=1756244837",
-      "https://cdn.shopify.com/s/files/1/0740/2287/9488/files/LREN6325XE_p172595_166250.jpg?v=1756244837",
-      "https://media.us.lg.com/transform/ecomm-PDPGallery-1100x730/089c9e7d-e60f-4b17-9527-719d990271c4/Ranges_LREN6325XE_Infographic_gallery-03_5000x5000"
-    ]
-  },
-  {
     model:"RS27T5200SR", brand:"Samsung",
     fullName:"Samsung 27.4 cu. ft. Side-by-Side Refrigerator - Stainless Steel",
-    type:"Side-by-Side Refrigerator", price:6918, qty:2, sold:1, soldInvoice:"SB-005055", soldDate:"March 4, 2026",
+    type:"Side-by-Side Refrigerator", price:6918, qty:1,
     specs:{capacity:"27.4 cu ft",dimensions:'70.06" H x 35.88" W x 33.5" D',color:"Stainless Steel",energy:"ENERGY STAR Certified (728 kWh/yr)",cooling:"All-Around Cooling",ice:"In-Door Ice Maker",compressor:"Digital Inverter (10-yr warranty)",compliance:"ADA Compliant"},
     features:["In-Door Ice Maker","External water & ice dispenser","All-Around Cooling multi-vent","Fingerprint-resistant finish","4 tempered glass shelves","LED lighting","Digital Inverter Compressor","SmartThings compatible"],
     images:[
@@ -427,14 +376,6 @@ const products = [
     specs:{capacity:"20.0 cu ft",dimensions:'71.75" H x 32.63" W x 24.25" D',color:"White",energy:"ENERGY STAR Most Efficient (424 kWh/yr)",compressor:"Variable speed",defrost:"Frost-free auto",garageReady:"0-110°F ambient",door:"Reversible swing"},
     features:["EvenTemp variable speed compressor","Garage-ready (0-110°F)","Frost-free auto defrost","Freeze Boost rapid freezing","4 adjustable glass shelves","5 fixed door bins + 1 basket","LED interior lighting","Power outage: frozen 2 days"],
     images:[
-      "https://cdn.shopify.com/s/files/1/0740/2287/9488/files/FFUE2024AW_p104460.webp?v=1760133130",
-      "https://cdn.shopify.com/s/files/1/0740/2287/9488/files/FFUE2024AW_p104460_5916.webp?v=1760133130",
-      "https://cdn.shopify.com/s/files/1/0740/2287/9488/files/FFUE2024AW_p104460_5917.webp?v=1760133130",
-      "https://cdn.shopify.com/s/files/1/0740/2287/9488/files/FFUE2024AW_p104460_5918.webp?v=1760133130",
-      "https://cdn.shopify.com/s/files/1/0740/2287/9488/files/FFUE2024AW_p104460_5919.webp?v=1760133130",
-      "https://cdn.shopify.com/s/files/1/0740/2287/9488/files/FFUE2024AW_p104460_5920.webp?v=1760133130",
-      "https://cdn.shopify.com/s/files/1/0740/2287/9488/files/FFUE2024AW_p104460_5921.webp?v=1760133130",
-      "https://cdn.shopify.com/s/files/1/0740/2287/9488/files/FFUE2024AW_p104460_5922.webp?v=1760133130"
     ]
   },
   {
@@ -445,24 +386,7 @@ const products = [
     features:["Convertible freezer/refrigerator mode","Garage-ready (0-110°F)","No Frost technology","Fast Freeze function","5 in-door bins + 4 shelves","LED interior lighting","Door-ajar & temp rise alarm","Lock and key"],
     images:[
       "https://www.appliancestorediscount.com/cdn/shop/files/imageService_9f9a289f-fb0e-4592-8d25-d476d00d4aac_1024x1024.webp?v=1718408353",
-      "https://www.appliancestorediscount.com/cdn/shop/files/IMG_4185_1024x1024.jpg?v=1718408365",
-      "https://www.appliancestorediscount.com/cdn/shop/files/IMG_4189_1024x1024.jpg?v=1718408365",
       "https://cdn.shopify.com/s/files/1/0642/4258/1712/files/imageDisplay_443fea83-ce1f-42d7-b97e-2286a4076529.jpg?v=1758331412"
-    ]
-  },
-  {
-    model:"LRTLS2403S", brand:"LG",
-    fullName:"LG 24 cu. ft. Top Freezer Refrigerator",
-    type:"Top-Freezer Refrigerator", price:5534, qty:1,
-    specs:{capacity:"23.8 cu ft",dimensions:'69" H x 33" W x 34" D',color:"PrintProof Stainless Steel",energy:"ENERGY STAR Certified",cooling:"Multi-Air Flow",dispenser:"Internal water dispenser",garageReady:"0-110°F ambient",shelves:"Spill Protector tempered glass"},
-    features:["Internal water dispenser","Multi-Air Flow technology","Spill Protector tempered glass shelves","Humidity-controlled crispers","Garage Ready (0-110°F)","Ice maker ready","LED lighting","Digital temperature sensors"],
-    images:[
-      "https://images.appliancepalace.com/products/lg/lrtls2403s/main/img-full.webp",
-      "https://images.appliancepalace.com/products/lg/lrtls2403s/main/img-initial.jpg",
-      "https://images.appliancepalace.com/products/lg/lrtls2403s/secondary/1/img-full.webp",
-      "https://images.appliancepalace.com/products/lg/lrtls2403s/secondary/2/img-full.webp",
-      "https://images.appliancepalace.com/products/lg/lrtls2403s/secondary/3/img-full.webp",
-      "https://images.appliancepalace.com/products/lg/lrtls2403s/secondary/4/img-full.webp"
     ]
   },
   {
@@ -473,66 +397,18 @@ const products = [
     features:["Freezer/refrigerator convertible","3 shelves + 4 pull-out drawers","All-Around Cooling","Power Freeze (50 hours max)","Reversible door","Child lock","Door alarm","LED lighting"],
     images:[
       "https://images.samsung.com/is/image/samsung/p6pim/us/rz11m7074sa-aa/gallery/us-refrigerator-rz11m7074sa-rz11m7074sa-aa-551270660",
-      "https://images.samsung.com/is/image/samsung/p6pim/us/rz11m7074sa-aa/gallery/us-refrigerator-rz11m7074sa-rz11m7074sa-aa-551270665",
       "https://images.appliancepalace.com/products/samsung/rz11m7074sa/main/img-full.webp",
       "https://images.appliancepalace.com/products/samsung/rz11m7074sa/secondary/1/img-full.webp",
       "https://images.appliancepalace.com/products/samsung/rz11m7074sa/secondary/2/img-full.webp",
       "https://images.appliancepalace.com/products/samsung/rz11m7074sa/secondary/3/img-full.webp"
-    ]
-  },
-  {
-    model:"CFU14N6AWE", brand:"Hisense",
-    fullName:"Hisense 13.6 cu. ft. Garage Ready Convertible Upright Freezer",
-    type:"Convertible Upright Freezer", price:3113, qty:2,
-    specs:{capacity:"13.6 cu ft",dimensions:'72.4" H x 29.5" W x 29.1" D',color:"White",energy:"ENERGY STAR Certified",defrost:"No Frost technology",garageReady:"0-110°F ambient",convertible:"Freezer/Fridge one-click",refrigerant:"R600a"},
-    features:["Freezer/refrigerator convertible","No Frost technology","Garage Ready (0-110°F)","Super Freeze function","5 shelves + door bins","LED lighting","Lock and key","Touch control panel with alarm"],
-    images:[
-      "https://www.appliancestorediscount.com/cdn/shop/files/imageService_9f9a289f-fb0e-4592-8d25-d476d00d4aac_1024x1024.webp?v=1718408353",
-      "https://www.appliancestorediscount.com/cdn/shop/files/IMG_4191_1024x1024.jpg?v=1718409633",
-      "https://www.appliancestorediscount.com/cdn/shop/files/IMG_4190_1024x1024.jpg?v=1718409634",
-      "https://www.appliancestorediscount.com/cdn/shop/files/IMG_4192_1024x1024.jpg?v=1718409634"
-    ]
-  },
-  {
-    model:"HFU101N1AVE", brand:"Hisense",
-    fullName:"Hisense 10.2 cu. ft. Garage Ready Convertible Upright Freezer",
-    type:"Convertible Upright Freezer", price:2975, qty:2, sold:1, soldInvoice:"SB-005055", soldDate:"March 4, 2026",
-    specs:{capacity:"10.2 cu ft",dimensions:'67.7" H x 21.7" W x 24.9" D',color:"Silver",energy:"ENERGY STAR Certified",defrost:"No Frost technology",garageReady:"0-110°F ambient",door:"Reversible with Seal Break Handle",noise:"42 dB"},
-    features:["Freezer/refrigerator convertible","No Frost technology","Garage Ready (0-110°F)","Seal Break Handle","Reversible door","LED lighting","Door alarm","Electronic temperature control"],
-    images:[
-      "https://assets.hisense-canada.com/assets/GalleryImages/Product/634/5b1d61f6d1/front__ScaleMaxHeightWzc1MF0.jpg",
-      "https://assets.hisense-canada.com/assets/GalleryImages/Product/634/5f5bfa95a8/display__ScaleMaxHeightWzc1MF0.jpg",
-      "https://assets.hisense-canada.com/assets/GalleryImages/Product/634/5a7a8dcbdc/handle__ScaleMaxHeightWzc1MF0.jpg",
-      "https://assets.hisense-canada.com/assets/GalleryImages/Product/634/6965b905e0/LED__ScaleMaxHeightWzc1MF0.jpg",
-      "https://assets.hisense-canada.com/assets/GalleryImages/Product/634/ae4c122c56/open-door-1__ScaleMaxHeightWzc1MF0.jpg",
-      "https://assets.hisense-canada.com/assets/GalleryImages/Product/634/260c0de07f/open-door-2__ScaleMaxHeightWzc1MF0.jpg",
-      "https://assets.hisense-canada.com/assets/GalleryImages/Product/634/6d7d14a21d/open-door-3__ScaleMaxHeightWzc1MF0.jpg",
-      "https://assets.hisense-canada.com/assets/GalleryImages/Product/634/377689f704/open-door-4__ScaleMaxHeightWzc1MF0.jpg",
-      "https://savewithstu.com/cdn/shop/files/4000353948-847__1.jpg?v=1774113727"
-    ]
-  },
-  {
-    model:"LRONC0605V", brand:"LG",
-    fullName:"LG 6 cu. ft. Single Door Compact Refrigerator",
-    type:"Compact Refrigerator", price:2698, qty:2,
-    specs:{capacity:"5.79 cu ft",dimensions:'44.62" H x 20.62" W x 21.87" D',color:"Platinum Silver",energy:"ENERGY STAR Certified",compressor:"Inverter",shelves:"2 tempered glass",cooling:"Direct cooling",freezer:"0.92 cu ft compartment"},
-    features:["Inverter compressor","2 tempered glass shelves","Large produce bin","LED rear-mounted panels","Curved pocket handle","6 adjustable shelves total","Door baskets for easy access","Compact design for small spaces"],
-    images:[
-      "https://cdn.shopify.com/s/files/1/0939/0057/0920/files/LRONC0605V_p121668.jpg?v=1749802025",
-      "https://cdn.shopify.com/s/files/1/0939/0057/0920/files/LRONC0605V_p121668_38882.jpg?v=1749802025",
-      "https://cdn.shopify.com/s/files/1/0939/0057/0920/files/LRONC0605V_p121668_38883.jpg?v=1749802025",
-      "https://cdn.shopify.com/s/files/1/0939/0057/0920/files/LRONC0605V_p121668_46934-1.jpg?v=1749802025",
-      "https://cdn.shopify.com/s/files/1/0939/0057/0920/files/LRONC0605V_p121668_38884.jpg?v=1749802025",
-      "https://cdn.shopify.com/s/files/1/0939/0057/0920/files/LRONC0605V_p121668_38885.jpg?v=1749802025",
-      "https://images.appliancepalace.com/products/lg/lronc0605v/main/img-full.webp"
     ]
   }
 ];
 
 // Models confirmed available in Ghana — flagged here so the list is easy to maintain.
 const ghanaModels = new Set([
-  "FFUE2024AW","RS28A500ASR","RF29BB8600QL","CFU14N6AWE","RS27T5200SR","LF25Z6211S","LF29H8330S",
-  "LRYXC2606S","RF23B7671SR","RF30BB660012","LRFXS3106S","LF30S8210S","LRTLS2403S","LCFC26XSS"
+  "FFUE2024AW","RS28A500ASR","RF29BB8600QL","RS27T5200SR","LF25Z6211S","LF29H8330S",
+  "LRYXC2606S","RF23B7671SR","RF30BB660012","LRFXS3106S","LF30S8210S","LCFC26XSS"
 ]);
 products.forEach(p => { if (ghanaModels.has(p.model)) p.ghana = 1; });
 
